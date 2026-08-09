@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Products | Mahmud Telecom</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ===========================
+LOGIN CHECK
+=========================== -->
+
+<script>
+
+if(localStorage.getItem("isLoggedIn")!=="true"){
+
+    alert("⚠️ আগে লগইন করুন");
+
+    location.href="login.html";
+
+}
+
+</script>
+
+<!-- ===========================
+DASHBOARD
+=========================== -->
+
+<div class="dashboard">
+
+<!-- ===========================
+SIDEBAR
+=========================== -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="images/logo.png" alt="Logo">
+
+<h2>Mahmud Telecom</h2>
+
+<p>Shop Management V8</p>
+
+</div>
+
+<ul>
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fas fa-home"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="products.html" class="active">
+
+<i class="fas fa-box"></i>
+
+Products
+
+</a>
+
+</li>
+
+<li>
+
+<a href="pos.html">
+
+<i class="fas fa-cash-register"></i>
+
+POS
+
+</a>
+
+</li>
+
+<li>
+
+<a href="purchase.html">
+
+<i class="fas fa-cart-plus"></i>
+
+Purchase
+
+</a>
+
+</li>
+<!-- Due Management -->
+
+<li>
+    <a href="due.html">
+
+        <i class="fas fa-hand-holding-dollar"></i>
+
+        Due
+
+    </a>
+</li>
+
+
+<!-- Mobile Recharge -->
+
+<li>
+    <a href="recharge.html">
+
+        <i class="fas fa-mobile-screen-button"></i>
+
+        Recharge
+
+    </a>
+</li>
+<li>
+
+<a href="customers.html">
+
+<i class="fas fa-users"></i>
+
+Customers
+
+</a>
+
+</li>
+
+<li>
+
+<a href="suppliers.html">
+
+<i class="fas fa-truck"></i>
+
+Suppliers
+
+</a>
+
+</li>
+
+<li>
+
+<a href="reports.html">
+
+<i class="fas fa-chart-line"></i>
+
+Reports
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fas fa-cog"></i>
+
+Settings
+
+</a>
+
+</li>
+
+<li>
+
+<a href="login.html" id="logoutBtn">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- ===========================
+MAIN CONTENT
+=========================== -->
+
+<main class="main-content">
+
+<!-- TOPBAR -->
+
+<header class="topbar">
+
+<div>
+
+<h1>📦 Product Management</h1>
+
+<p>
+
+মাহমুদ টেলিকমের সকল পণ্য পরিচালনা করুন
+
+</p>
+
+</div>
+
+<div class="top-actions">
+
+<input
+
+type="text"
+
+id="searchProduct"
+
+placeholder="🔍 পণ্য খুঁজুন...">
+
+</div>
+
+</header>
+<!-- ==========================================
+PRODUCT FORM
+========================================== -->
+
+<section class="card">
+
+<h2>➕ নতুন পণ্য যোগ করুন</h2>
+
+<form id="productForm" class="product-form">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>পণ্যের নাম</label>
+<input
+type="text"
+id="productName"
+placeholder="যেমন: Samsung A16"
+required>
+</div>
+
+<div class="form-group">
+<label>ক্যাটাগরি</label>
+<select id="productCategory" required>
+<option value="">নির্বাচন করুন</option>
+<option>Mobile</option>
+<option>Accessories</option>
+<option>Electronics</option>
+<option>SIM</option>
+<option>Recharge</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>ব্র্যান্ড</label>
+<input
+type="text"
+id="productBrand"
+placeholder="Samsung / Xiaomi / Vivo">
+</div>
+
+<div class="form-group">
+<label>Purchase Price</label>
+<input
+type="number"
+id="purchasePrice"
+placeholder="0">
+</div>
+
+<div class="form-group">
+<label>Selling Price</label>
+<input
+type="number"
+id="sellingPrice"
+placeholder="0"
+required>
+</div>
+
+<div class="form-group">
+<label>Stock</label>
+<input
+type="number"
+id="productStock"
+placeholder="0"
+required>
+</div>
+
+<div class="form-group">
+<label>Low Stock Alert</label>
+<input
+type="number"
+id="lowStock"
+placeholder="5">
+</div>
+
+<div class="form-group">
+<label>Barcode / IMEI</label>
+<input
+type="text"
+id="productIMEI"
+placeholder="Barcode অথবা IMEI">
+</div>
+
+<div class="form-group">
+
+<label>Product Image</label>
+
+<input
+type="file"
+id="productImage"
+accept="image/*">
+
+</div>
+
+</div>
+
+<div style="margin-top:20px;">
+
+<button
+type="submit"
+class="dashboard-btn">
+
+💾 Save Product
+
+</button>
+
+<button
+type="reset"
+class="dashboard-btn"
+style="background:#6c757d;">
+
+🔄 Reset
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+<!-- ==========================================
+SEARCH & FILTER
+========================================== -->
+
+<section class="card">
+
+    <div class="table-header">
+
+        <h2>📦 Product List</h2>
+
+        <div class="table-actions">
+
+            <input
+                type="text"
+                id="searchProduct"
+                placeholder="🔍 Search Product...">
+
+            <select id="filterCategory">
+
+                <option value="">সব ক্যাটাগরি</option>
+
+                <option value="Mobile">Mobile</option>
+
+                <option value="Accessories">Accessories</option>
+
+                <option value="Electronics">Electronics</option>
+
+                <option value="SIM">SIM</option>
+
+                <option value="Recharge">Recharge</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="product-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Image</th>
+
+                    <th>Product</th>
+
+                    <th>Category</th>
+
+                    <th>Brand</th>
+
+                    <th>Buy Price</th>
+
+                    <th>Sell Price</th>
+
+                    <th>Stock</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="productTableBody">
+
+                <tr>
+
+                    <td colspan="10" style="text-align:center;padding:30px;">
+
+                        এখনো কোনো পণ্য যোগ করা হয়নি
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+IMAGE PREVIEW
+========================================== -->
+
+<section class="card">
+
+    <h2>🖼️ Product Preview</h2>
+
+    <div id="productPreview">
+
+        <p style="text-align:center;color:#666;padding:30px;">
+
+            কোনো পণ্য নির্বাচন করা হয়নি
+
+        </p>
+
+    </div>
+
+</section>
+<!-- ==========================================
+DELETE CONFIRM MODAL
+========================================== -->
+
+<div id="deleteModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>⚠️ Delete Product</h2>
+
+        <p>
+
+            আপনি কি নিশ্চিত এই পণ্যটি মুছে ফেলতে চান?
+
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                id="confirmDelete"
+                class="btn-danger">
+
+                🗑 Delete
+
+            </button>
+
+            <button
+                id="cancelDelete"
+                class="btn-secondary">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="js/products.js"></script>
+
+</body>
+
+</html>

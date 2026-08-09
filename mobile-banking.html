@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mobile Banking | Mahmud Telecom V8</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+    <style>
+
+        /* =====================================
+           NEW MOBILE BANKING SYSTEM
+        ====================================== */
+
+        .mb-page {
+            padding: 20px;
+            background: #eef3f9;
+            min-height: 100vh;
+        }
+
+        .mb-header {
+            background: linear-gradient(
+                135deg,
+                #0d47a1,
+                #1976d2
+            );
+            color: white;
+            padding: 22px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+        }
+
+        .mb-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .mb-header p {
+            margin: 7px 0 0;
+            opacity: .9;
+        }
+
+        /* =====================================
+           ACCOUNT CARDS
+        ====================================== */
+
+        .mb-accounts {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(150px, 1fr));
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .mb-account {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow:
+                0 3px 12px rgba(0,0,0,.08);
+        }
+
+        .mb-account h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+        }
+
+        .mb-balance {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1565c0;
+        }
+
+        .mb-account small {
+            color: #777;
+        }
+
+        .bkash-card {
+            border-top: 4px solid #8e24aa;
+        }
+
+        .nagad-card {
+            border-top: 4px solid #ff9800;
+        }
+
+        .rocket-card {
+            border-top: 4px solid #1976d2;
+        }
+
+        .mcash-card {
+            border-top: 4px solid #43a047;
+        }
+
+        .cellfin-card {
+            border-top: 4px solid #00897b;
+        }
+
+        .bank-card {
+            border-top: 4px solid #455a64;
+        }
+
+        .cash-card {
+            border-top: 4px solid #2e7d32;
+        }
+
+        /* =====================================
+           FORM
+        ====================================== */
+
+        .mb-box {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,.07);
+        }
+
+        .mb-box h2 {
+            margin-top: 0;
+            color: #174a8b;
+        }
+
+        .mb-form {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(180px, 1fr));
+
+            gap: 14px;
+        }
+
+        .mb-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mb-field label {
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .mb-field input,
+        .mb-field select,
+        .mb-field textarea {
+            padding: 11px;
+
+            border: 1px solid #d4dce8;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            width: 100%;
+        }
+
+        .mb-field input:focus,
+        .mb-field select:focus,
+        .mb-field textarea:focus {
+            border-color: #1976d2;
+        }
+
+        .mb-full {
+            grid-column: 1 / -1;
+        }
+
+        .mb-save {
+            background: #1565c0;
+            color: white;
+
+            border: none;
+
+            padding: 13px 25px;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .mb-save:hover {
+            background: #0d47a1;
+        }
+
+        /* =====================================
+           SEARCH
+        ====================================== */
+
+        .mb-search {
+            margin-bottom: 15px;
+        }
+
+        .mb-search input {
+            width: 100%;
+            padding: 12px;
+
+            border: 1px solid #d4dce8;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+        }
+
+        /* =====================================
+           TABLE
+        ====================================== */
+
+        .mb-table-wrap {
+            overflow-x: auto;
+        }
+
+        .mb-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1100px;
+        }
+
+        .mb-table th {
+            background: #1565c0;
+            color: white;
+            padding: 11px;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .mb-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 12px;
+        }
+
+        .mb-table tr:hover {
+            background: #f5f8ff;
+        }
+
+        .receive {
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .payment {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .mb-delete {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 9px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ====================================== */
+
+        @media (max-width: 1000px) {
+
+            .mb-accounts {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .mb-form {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .mb-page {
+                padding: 10px;
+            }
+
+            .mb-accounts {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .mb-account {
+                padding: 12px;
+            }
+
+            .mb-balance {
+                font-size: 18px;
+            }
+
+            .mb-form {
+                grid-template-columns: 1fr;
+            }
+
+            .mb-full {
+                grid-column: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     PAGE
+========================================== -->
+
+<div class="mb-page">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div class="mb-header">
+
+        <h1>
+            💳 Mobile Banking & Accounts
+        </h1>
+
+        <p>
+            bKash • Nagad • Rocket • mCash •
+            CellFin • Bank • Cash
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         ACCOUNT SUMMARY
+    ====================================== -->
+
+    <div class="mb-accounts">
+
+
+        <div class="mb-account bkash-card">
+
+            <h3>🟣 bKash</h3>
+
+            <div
+                class="mb-balance"
+                id="mbBkashBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+        <div class="mb-account nagad-card">
+
+            <h3>🟠 Nagad</h3>
+
+            <div
+                class="mb-balance"
+                id="mbNagadBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+        <div class="mb-account rocket-card">
+
+            <h3>🔵 Rocket</h3>
+
+            <div
+                class="mb-balance"
+                id="mbRocketBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+        <div class="mb-account mcash-card">
+
+            <h3>🟢 Islami Bank mCash</h3>
+
+            <div
+                class="mb-balance"
+                id="mbMcashBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+        <div class="mb-account cellfin-card">
+
+            <h3>🔷 CellFin</h3>
+
+            <div
+                class="mb-balance"
+                id="mbCellfinBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+        <div class="mb-account bank-card">
+
+            <h3>🏦 Bank Account</h3>
+
+            <div
+                class="mb-balance"
+                id="mbBankBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+        <div class="mb-account cash-card">
+
+            <h3>💵 Cash</h3>
+
+            <div
+                class="mb-balance"
+                id="mbCashBalance"
+            >
+                ৳ 0
+            </div>
+
+            <small>
+                Current Balance
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================
+         NEW TRANSACTION
+    ====================================== -->
+
+    <div class="mb-box">
+
+        <h2>
+            ➕ নতুন লেনদেন
+        </h2>
+
+
+        <form id="newMobileTransactionForm">
+
+
+            <div class="mb-form">
+
+
+                <!-- Customer -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Customer Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="mbCustomer"
+                        placeholder="Customer Name"
+                    >
+
+                </div>
+
+
+                <!-- Mobile -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Mobile Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="mbMobile"
+                        placeholder="01XXXXXXXXX"
+                    >
+
+                </div>
+
+
+                <!-- Account -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Account / Method
+                    </label>
+
+                    <select id="mbAccount">
+
+                        <option value="">
+                            নির্বাচন করুন
+                        </option>
+
+                        <option value="bKash">
+                            🟣 bKash
+                        </option>
+
+                        <option value="Nagad">
+                            🟠 Nagad
+                        </option>
+
+                        <option value="Rocket">
+                            🔵 Rocket
+                        </option>
+
+                        <option value="mCash">
+                            🟢 Islami Bank mCash
+                        </option>
+
+                        <option value="CellFin">
+                            🔷 CellFin
+                        </option>
+
+                        <option value="Bank Account">
+                            🏦 Bank Account
+                        </option>
+
+                        <option value="Cash">
+                            💵 Cash
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Transaction Type -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Transaction Type
+                    </label>
+
+                    <select id="mbType">
+
+                        <option value="">
+                            নির্বাচন করুন
+                        </option>
+
+                        <option value="Receive">
+                            💰 Receive
+                        </option>
+
+                        <option value="Payment">
+                            💸 Payment
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Service -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Service
+                    </label>
+
+                    <select id="mbService">
+
+                        <option value="">
+                            নির্বাচন করুন
+                        </option>
+
+                        <option value="Send Money">
+                            Send Money
+                        </option>
+
+                        <option value="Cash In">
+                            Cash In
+                        </option>
+
+                        <option value="Cash Out">
+                            Cash Out
+                        </option>
+
+                        <option value="Payment">
+                            Payment
+                        </option>
+
+                        <option value="Recharge">
+                            Recharge
+                        </option>
+
+                        <option value="Add Money">
+                            Add Money
+                        </option>
+
+                        <option value="Transfer">
+                            Transfer
+                        </option>
+
+                        <option value="Bank Deposit">
+                            Bank Deposit
+                        </option>
+
+                        <option value="Bank Withdrawal">
+                            Bank Withdrawal
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Amount -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="mbAmount"
+                        min="1"
+                        placeholder="৳ Amount"
+                    >
+
+                </div>
+
+
+                <!-- Charge -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Charge
+                    </label>
+
+                    <input
+                        type="number"
+                        id="mbCharge"
+                        min="0"
+                        value="0"
+                        placeholder="৳ Charge"
+                    >
+
+                </div>
+
+
+                <!-- Transaction ID -->
+
+                <div class="mb-field">
+
+                    <label>
+                        Transaction ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="mbTransactionId"
+                        placeholder="Transaction ID"
+                    >
+
+                </div>
+
+
+                <!-- Note -->
+
+                <div class="mb-field mb-full">
+
+                    <label>
+                        Note
+                    </label>
+
+                    <textarea
+                        id="mbNote"
+                        rows="2"
+                        placeholder="প্রয়োজনে নোট লিখুন"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- SAVE -->
+
+                <div class="mb-field mb-full">
+
+                    <button
+                        type="submit"
+                        class="mb-save"
+                    >
+                        💾 Save Transaction
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- =====================================
+         HISTORY
+    ====================================== -->
+
+    <div class="mb-box">
+
+        <h2>
+            📋 Transaction History
+        </h2>
+
+
+        <div class="mb-search">
+
+            <input
+                type="search"
+                id="mbSearch"
+                placeholder="Customer / Mobile / Account / Transaction ID খুঁজুন..."
+            >
+
+        </div>
+
+
+        <div class="mb-table-wrap">
+
+            <table class="mb-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Date</th>
+
+                        <th>Customer</th>
+
+                        <th>Mobile</th>
+
+                        <th>Account</th>
+
+                        <th>Type</th>
+
+                        <th>Service</th>
+
+                        <th>Amount</th>
+
+                        <th>Charge</th>
+
+                        <th>Transaction ID</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="mbTransactionTable">
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+
+        <div
+            id="mbNoData"
+            style="
+                text-align:center;
+                padding:25px;
+                color:#777;
+            "
+        >
+            এখনো কোনো লেনদেন নেই
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="js/mobile-banking.js"></script>
+
+
+</body>
+
+</html>

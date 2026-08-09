@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Recharge | Mahmud Telecom</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================
+     LOGIN CHECK
+====================================== -->
+
+<script>
+
+if(localStorage.getItem("isLoggedIn") !== "true"){
+
+    alert("⚠️ আগে লগইন করুন");
+
+    location.href = "login.html";
+
+}
+
+</script>
+
+
+<div class="dashboard">
+
+
+    <!-- ======================================
+         SIDEBAR
+    ======================================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img src="images/logo.png"
+                 alt="Logo">
+
+            <h2>Mahmud Telecom</h2>
+
+        </div>
+
+
+        <ul>
+
+
+            <li>
+
+                <a href="dashboard.html">
+
+                    <i class="fas fa-home"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="products.html">
+
+                    <i class="fas fa-box"></i>
+
+                    Products
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="pos.html">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    POS
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="purchase.html">
+
+                    <i class="fas fa-cart-plus"></i>
+
+                    Purchase
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="due.html">
+
+                    <i class="fas fa-hand-holding-dollar"></i>
+
+                    Due
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="recharge.html"
+                   class="active">
+
+                    <i class="fas fa-mobile-screen-button"></i>
+
+                    Recharge
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="customers.html">
+
+                    <i class="fas fa-users"></i>
+
+                    Customers
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="suppliers.html">
+
+                    <i class="fas fa-truck"></i>
+
+                    Suppliers
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="reports.html">
+
+                    <i class="fas fa-chart-line"></i>
+
+                    Reports
+
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="settings.html">
+
+                    <i class="fas fa-cog"></i>
+
+                    Settings
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </aside>
+
+
+
+    <!-- ======================================
+         MAIN CONTENT
+    ======================================= -->
+
+    <main class="main-content">
+
+
+        <!-- ==================================
+             TOPBAR
+        =================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+
+                    📱 Mobile Recharge
+
+                </h1>
+
+                <p>
+
+                    Mobile Recharge Management
+
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutBtn">
+
+                Logout
+
+            </button>
+
+        </header>
+
+
+
+        <!-- ==================================
+             SUMMARY CARDS
+        =================================== -->
+
+        <section class="cards">
+
+
+            <div class="card">
+
+                <h3>
+
+                    Total Recharge
+
+                </h3>
+
+                <h2 id="totalRecharge">
+
+                    ৳0
+
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+
+                    Today's Recharge
+
+                </h3>
+
+                <h2 id="todayRecharge">
+
+                    ৳0
+
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+
+                    Total Transactions
+
+                </h3>
+
+                <h2 id="totalRechargeCount">
+
+                    0
+
+                </h2>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             RECHARGE FORM
+        =================================== -->
+
+        <section class="dashboard-box">
+
+
+            <h2>
+
+                📱 New Mobile Recharge
+
+            </h2>
+
+
+            <form id="rechargeForm">
+
+
+                <!-- Mobile Number -->
+
+                <div class="form-group">
+
+                    <label for="rechargeMobile">
+
+                        Mobile Number
+
+                    </label>
+
+
+                    <input
+                        type="tel"
+                        id="rechargeMobile"
+                        placeholder="01XXXXXXXXX"
+                        maxlength="11"
+                        required>
+
+                </div>
+
+
+
+                <!-- Operator -->
+
+                <div class="form-group">
+
+                    <label for="rechargeOperator">
+
+                        Operator
+
+                    </label>
+
+
+                    <select
+                        id="rechargeOperator"
+                        required>
+
+                        <option value="">
+
+                            Operator নির্বাচন করুন
+
+                        </option>
+
+
+                        <option value="Grameenphone">
+
+                            Grameenphone
+
+                        </option>
+
+
+                        <option value="Robi">
+
+                            Robi
+
+                        </option>
+
+
+                        <option value="Airtel">
+
+                            Airtel
+
+                        </option>
+
+
+                        <option value="Banglalink">
+
+                            Banglalink
+
+                        </option>
+
+
+                        <option value="Teletalk">
+
+                            Teletalk
+
+                        </option>
+
+
+                        <option value="Skitto">
+
+                            Skitto
+
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Recharge Amount -->
+
+                <div class="form-group">
+
+                    <label for="rechargeAmount">
+
+                        Recharge Amount
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        id="rechargeAmount"
+                        placeholder="৳ Amount"
+                        min="1"
+                        step="1"
+                        required>
+
+                </div>
+
+
+
+                <!-- Customer Name -->
+
+                <div class="form-group">
+
+                    <label for="rechargeCustomer">
+
+                        Customer Name
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="rechargeCustomer"
+                        placeholder="Customer Name">
+
+                </div>
+
+
+
+                <!-- Payment Method -->
+
+                <div class="form-group">
+
+                    <label for="rechargePayment">
+
+                        Payment Method
+
+                    </label>
+
+
+                    <select
+                        id="rechargePayment"
+                        required>
+
+                        <option value="">
+
+                            Payment Method নির্বাচন করুন
+
+                        </option>
+
+
+                        <option value="Cash">
+
+                            Cash
+
+                        </option>
+
+
+                        <option value="bKash">
+
+                            bKash
+
+                        </option>
+
+
+                        <option value="Nagad">
+
+                            Nagad
+
+                        </option>
+
+
+                        <option value="Rocket">
+
+                            Rocket
+
+                        </option>
+
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Note -->
+
+                <div class="form-group">
+
+                    <label for="rechargeNote">
+
+                        Note
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="rechargeNote"
+                        placeholder="Optional">
+
+                </div>
+
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    <i class="fas fa-mobile-screen-button"></i>
+
+                    Recharge Save
+
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ==================================
+             SEARCH
+        =================================== -->
+
+        <section class="dashboard-box">
+
+
+            <div class="section-header">
+
+                <h2>
+
+                    📋 Recharge History
+
+                </h2>
+
+
+                <input
+                    type="search"
+                    id="rechargeSearch"
+                    placeholder="Mobile / Customer খুঁজুন...">
+
+            </div>
+
+
+
+            <!-- ==================================
+                 RECHARGE TABLE
+            =================================== -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+
+                                #
+
+                            </th>
+
+
+                            <th>
+
+                                Date
+
+                            </th>
+
+
+                            <th>
+
+                                Mobile
+
+                            </th>
+
+
+                            <th>
+
+                                Operator
+
+                            </th>
+
+
+                            <th>
+
+                                Customer
+
+                            </th>
+
+
+                            <th>
+
+                                Amount
+
+                            </th>
+
+
+                            <th>
+
+                                Payment
+
+                            </th>
+
+
+                            <th>
+
+                                Action
+
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="rechargeTableBody">
+
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                style="
+                                text-align:center;
+                                padding:25px;
+                                ">
+
+                                কোনো Recharge Data নেই
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- ======================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="js/recharge.js"></script>
+
+
+</body>
+
+</html>

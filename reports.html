@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reports | Mahmud Telecom</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<script>
+
+if(localStorage.getItem("isLoggedIn")!=="true"){
+
+    alert("⚠️ আগে লগইন করুন");
+
+    location.href="login.html";
+
+}
+
+</script>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<img src="images/logo.png" alt="Logo">
+
+<h2>Mahmud Telecom</h2>
+
+<p>Shop Management V8</p>
+
+</div>
+
+<ul>
+
+<li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+
+<li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
+
+<li><a href="pos.html"><i class="fas fa-cash-register"></i> POS</a></li>
+<!-- Due Management -->
+
+<li>
+    <a href="due.html">
+
+        <i class="fas fa-hand-holding-dollar"></i>
+
+        Due
+
+    </a>
+</li>
+
+
+<!-- Mobile Recharge -->
+
+<li>
+    <a href="recharge.html">
+
+        <i class="fas fa-mobile-screen-button"></i>
+
+        Recharge
+
+    </a>
+</li>
+<li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
+
+<li><a href="purchase.html"><i class="fas fa-cart-plus"></i> Purchase</a></li>
+
+<li><a href="suppliers.html"><i class="fas fa-truck"></i> Suppliers</a></li>
+
+<li><a href="reports.html" class="active"><i class="fas fa-chart-line"></i> Reports</a></li>
+
+<li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+
+<li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
+
+</ul>
+
+</aside>
+
+<main class="main-content">
+
+<header class="topbar">
+
+<h1>📊 Reports & Analytics</h1>
+
+<p>বিক্রয়, ক্রয় ও ব্যবসার সারসংক্ষেপ</p>
+
+</header>
+<!-- ==========================================
+     REPORT EXPORT
+========================================== -->
+
+<div class="report-actions">
+
+    <button
+        type="button"
+        id="exportSalesBtn"
+        class="report-export-btn">
+
+        <i class="fas fa-file-csv"></i>
+        Export Sales CSV
+
+    </button>
+
+    <button
+        type="button"
+        id="exportPurchaseBtn"
+        class="report-export-btn">
+
+        <i class="fas fa-file-export"></i>
+        Export Purchase CSV
+
+    </button>
+
+</div>
+<!-- ==========================================
+REPORT SUMMARY CARDS
+========================================== -->
+
+<section class="cards">
+
+    <div class="card">
+        <h3>💰 Total Sales</h3>
+        <h2 id="reportTotalSales">৳ 0</h2>
+    </div>
+
+    <div class="card">
+        <h3>📦 Total Purchase</h3>
+        <h2 id="reportTotalPurchase">৳ 0</h2>
+    </div>
+
+    <div class="card">
+        <h3>📈 Total Profit</h3>
+        <h2 id="reportTotalProfit">৳ 0</h2>
+    </div>
+
+    <div class="card">
+        <h3>📱 Total Products</h3>
+        <h2 id="reportTotalProducts">0</h2>
+    </div>
+
+    <div class="card">
+        <h3>👥 Total Customers</h3>
+        <h2 id="reportTotalCustomers">0</h2>
+    </div>
+
+    <div class="card">
+        <h3>🚚 Total Suppliers</h3>
+        <h2 id="reportTotalSuppliers">0</h2>
+    </div>
+
+</section>
+
+<!-- ==========================================
+LOW STOCK REPORT
+========================================== -->
+
+<section class="card">
+
+    <div class="table-header">
+
+        <h2>⚠️ Low Stock Products</h2>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="product-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Stock</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="lowStockTableBody">
+
+                <tr>
+
+                    <td colspan="3"
+                        style="text-align:center;padding:25px;color:#777;">
+
+                        কোনো Low Stock Product নেই
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- ==========================================
+RECENT SALES REPORT
+========================================== -->
+
+<section class="card">
+
+    <div class="table-header">
+
+        <h2>🧾 Recent Sales</h2>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="product-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="recentSalesBody">
+
+                <tr>
+
+                    <td colspan="4"
+                        style="text-align:center;padding:25px;color:#777;">
+
+                        কোনো Sales Data নেই
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+RECENT PURCHASE REPORT
+========================================== -->
+
+<section class="card">
+
+    <div class="table-header">
+
+        <h2>📦 Recent Purchases</h2>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="product-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Supplier</th>
+                    <th>Total</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="recentPurchaseBody">
+
+                <tr>
+
+                    <td colspan="4"
+                        style="text-align:center;padding:25px;color:#777;">
+
+                        কোনো Purchase Data নেই
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="js/reports.js"></script>
+
+</body>
+
+</html>

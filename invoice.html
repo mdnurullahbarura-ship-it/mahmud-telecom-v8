@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Invoice | Mahmud Telecom</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<style>
+
+body{
+
+    margin:0;
+
+    padding:20px;
+
+    background:#f4f7fc;
+
+    font-family:"Hind Siliguri",sans-serif;
+
+}
+
+.invoice-container{
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:12px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.10);
+
+}
+
+.invoice-header{
+
+    text-align:center;
+
+    border-bottom:2px solid #1565c0;
+
+    padding-bottom:15px;
+
+    margin-bottom:20px;
+
+}
+
+.invoice-header h1{
+
+    margin:0;
+
+    color:#1565c0;
+
+}
+
+.invoice-header p{
+
+    margin:5px 0;
+
+    color:#555;
+
+}
+
+.invoice-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+
+}
+
+.invoice-info p{
+
+    margin:5px 0;
+
+    font-size:15px;
+
+}
+
+.product-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.product-table th{
+
+    background:#1565c0;
+
+    color:#fff;
+
+    padding:10px;
+
+}
+
+.product-table td{
+
+    padding:10px;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+.invoice-total{
+
+    margin-top:20px;
+
+    text-align:right;
+
+}
+
+.invoice-total h2{
+
+    color:#1565c0;
+
+}
+
+.invoice-footer{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:#666;
+
+}
+
+.dashboard-btn{
+
+    margin-top:20px;
+
+}
+
+@media print{
+
+body{
+
+background:#fff;
+
+padding:0;
+
+}
+
+.invoice-container{
+
+box-shadow:none;
+
+border-radius:0;
+
+max-width:100%;
+
+}
+
+.dashboard-btn{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="invoice-container">
+
+<div class="invoice-header">
+
+<h1 id="invoiceShopName">
+
+Mahmud Telecom
+
+</h1>
+
+<p id="invoiceAddress">
+
+Shop Address
+
+</p>
+
+<p id="invoiceMobile">
+
+Mobile Number
+
+</p>
+
+<h2>
+
+SALES INVOICE
+
+</h2>
+
+</div>
+
+<div class="invoice-info">
+
+<p>
+
+<b>Invoice No:</b>
+
+<span id="invoiceNo">
+
+INV-0001
+
+</span>
+
+</p>
+
+<p>
+
+<b>Date:</b>
+
+<span id="invoiceDate">
+
+</span>
+
+</p>
+
+<p>
+
+<b>Customer:</b>
+
+<span id="invoiceCustomer">
+
+Walk-in Customer
+
+</span>
+
+</p>
+
+</div>
+<!-- ==========================================
+Invoice Product Table
+========================================== -->
+
+<table class="product-table">
+
+    <thead>
+
+        <tr>
+
+            <th>Product</th>
+
+            <th>Qty</th>
+
+            <th>Price</th>
+
+            <th>Total</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="invoiceItems">
+
+        <tr>
+
+            <td colspan="4"
+            style="text-align:center;color:#777;padding:20px;">
+
+                কোনো পণ্য পাওয়া যায়নি
+
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+<!-- ==========================================
+Grand Total
+========================================== -->
+
+<div class="invoice-total">
+
+    <h2>
+
+        Grand Total :
+
+        <span id="invoiceTotal">
+
+            ৳ 0
+
+        </span>
+
+    </h2>
+
+</div>
+
+<hr>
+
+<!-- ==========================================
+Footer
+========================================== -->
+
+<div class="invoice-footer">
+
+    <p id="invoiceFooter">
+
+        ধন্যবাদ। আবার আসবেন।
+
+    </p>
+
+</div>
+
+<button
+id="printInvoiceBtn"
+class="dashboard-btn">
+
+🖨️ Print Invoice
+
+</button>
+<!-- ==========================================
+End Invoice
+========================================== -->
+
+</div>
+
+<script src="js/invoice.js"></script>
+
+</body>
+
+</html>
