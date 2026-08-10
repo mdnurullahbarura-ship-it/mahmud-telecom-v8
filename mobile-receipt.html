@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaction Receipt | Mahmud Telecom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f8;font-family:Arial,"Noto Sans Bengali",sans-serif;color:#111}
+.receipt-wrap{width:100%;max-width:430px;margin:24px auto;background:#fff;padding:24px 30px;box-shadow:0 3px 18px rgba(0,0,0,.08)}
+.brand{text-align:center;font-size:28px;font-weight:700;margin:0}
+.subtitle{text-align:center;font-size:15px;margin:4px 0 14px}
+.line{border-top:2px dashed #222;margin:12px 0 18px}
+h2{text-align:center;font-size:21px;margin:0 0 18px}
+.row{display:grid;grid-template-columns:42% 58%;padding:9px 0;border-bottom:1px dotted #aaa;font-size:14px}
+.label{font-weight:700}
+.value{word-break:break-word}
+.total{border:2px solid #222;padding:16px 10px;text-align:center;font-size:23px;font-weight:700;margin:18px 0}
+.note{font-size:13px;margin-top:12px;white-space:pre-wrap;word-break:break-word}
+.thanks{text-align:center;line-height:1.7;margin-top:16px;font-size:14px}
+.actions{text-align:center;margin-top:18px}
+button{border:0;border-radius:6px;padding:12px 22px;font-size:15px;font-weight:700;cursor:pointer;background:#1565c0;color:#fff;margin:4px}
+.back{background:#555}
+@media print{
+ @page{size:A5 portrait;margin:8mm}
+ body{background:#fff}
+ .receipt-wrap{max-width:none;width:100%;margin:0;box-shadow:none;padding:8mm 10mm}
+ .actions{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="receipt-wrap" id="receipt">
+  <div class="brand">📱 Mahmud Telecom</div>
+  <div class="subtitle">Digital Services</div>
+  <div class="line"></div>
+  <h2>🧾 Transaction Receipt</h2>
+  <div id="details"></div>
+  <div class="total" id="total">Total: ৳ 0</div>
+  <div class="note" id="note"></div>
+  <div class="line"></div>
+  <div class="thanks">ধন্যবাদ আমাদের সেবা গ্রহণ করার জন্য।<br><strong>Mahmud Telecom</strong></div>
+  <div class="actions">
+    <button onclick="window.print()">🖨️ Print Receipt</button>
+    <button class="back" onclick="history.back()">↩️ Back</button>
+  </div>
+</div>
+<script>
+(function(){
+  const key='mahmudMobileBankingTransactions';
+  const data=JSON.parse(localStorage.getItem(key)||'[]');
+  const params=new URLSearchParams(location.search);
+  const id=Number(params.get('id')||localStorage.getItem('mahmudLastMobileTransactionId'));
+  const item=data.find(x=>Number(x.id)===id) || data[0];
+  const details=document.getElementById('details');
+  const total=document.getElementById('total');
+  const note=document.getElementById('note');
+  const money=n=> '৳ '+Number(n||0).toLocaleString('en-BD');
+  const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  if(!item){details.innerHTML='<p style="text-align:center">কোনো Transaction পাওয়া যায়নি।</p>';return;}
+  const rows=[
+    ['Date',item.date||''],
+    ['Customer',item.customer||''],
+    ['Mobile',item.mobile||''],
+    ['Account / Method',item.account||''],
+    ['Transaction Type',item.type||''],
+    ['Service',item.service||''],
+    ['Transaction ID',item.transactionId||'-'],
+    ['Charge',money(item.charge)]
+  ];
+  details.innerHTML=rows.map(r=>`<div class="row"><div class="label">${esc(r[0])}</div><div class="value">${esc(r[1])}</div></div>`).join('');
+  total.textContent='Total: '+money(item.amount);
+  if(item.note) note.innerHTML='<strong>Note:</strong> '+esc(item.note);
+})();
+</script>
+</body>
+</html>

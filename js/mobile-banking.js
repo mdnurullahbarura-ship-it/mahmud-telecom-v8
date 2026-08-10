@@ -408,6 +408,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         <button
                             type="button"
+                            class="mb-receipt-btn"
+                            data-receipt-id="${item.id}"
+                        >
+                            🧾 Receipt
+                        </button>
+
+                        <button
+                            type="button"
                             class="mb-delete"
                             data-id="${item.id}"
                         >
@@ -420,6 +428,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 table.appendChild(row);
+
+            }
+        );
+
+
+        // ==============================================
+        // RECEIPT BUTTONS
+        // ==============================================
+
+        const receiptButtons =
+            table.querySelectorAll(
+                ".mb-receipt-btn"
+            );
+
+        receiptButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const id =
+                            Number(this.dataset.receiptId);
+
+                        localStorage.setItem(
+                            "mahmudLastMobileTransactionId",
+                            String(id)
+                        );
+
+                        window.location.href =
+                            "mobile-receipt.html?id=" + id;
+
+                    }
+                );
 
             }
         );
@@ -754,9 +796,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 // SUCCESS
                 // ======================================
 
-                alert(
-                    "✅ লেনদেন সফলভাবে Save হয়েছে।"
+                localStorage.setItem(
+                    "mahmudLastMobileTransactionId",
+                    String(transaction.id)
                 );
+
+                // Recharge-এর মতো Transaction Receipt page খুলবে
+                window.location.href =
+                    "mobile-receipt.html?id=" + transaction.id;
 
             }
         );
