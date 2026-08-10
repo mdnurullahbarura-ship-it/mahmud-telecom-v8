@@ -1006,6 +1006,283 @@ function updateDueSummary() {
 }
 
 
+
+// ======================================
+// PRINT DUE REPORT
+// ======================================
+
+function printDueReport() {
+
+    const search =
+        String(dueSearch ? dueSearch.value : "")
+        .toLowerCase()
+        .trim();
+
+    const filtered =
+        dueList.filter(function(item) {
+
+            const name =
+                String(item.name || "")
+                .toLowerCase();
+
+            const phone =
+                String(item.phone || "")
+                .toLowerCase();
+
+            return (
+                name.includes(search) ||
+                phone.includes(search)
+            );
+
+        });
+
+    const total =
+        filtered.reduce(function(sum, item) {
+            return sum + Number(item.amount || 0);
+        }, 0);
+
+    const rows =
+        filtered.length
+        ? filtered.map(function(item, index) {
+
+            return `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${escapePrint(item.name)}</td>
+                    <td>${escapePrint(item.phone || "-")}</td>
+                    <td>৳ ${formatMoney(item.amount)}</td>
+                    <td>${escapePrint(item.date || "-")}</td>
+                    <td>${escapePrint(item.note || "-")}</td>
+                </tr>
+            `;
+
+        }).join("")
+        : `
+            <tr>
+                <td colspan="6" style="text-align:center;">
+                    কোনো Due Data নেই
+                </td>
+            </tr>
+        `;
+
+    openPrintWindow(
+        "Customer Due Report",
+        `
+        <div class="report-head">
+            <h1>Mahmud Telecom</h1>
+            <h2>Customer Due Report</h2>
+            <p>তারিখ: ${new Date().toLocaleDateString("en-GB")}</p>
+            ${search ? `<p>Search: ${escapePrint(search)}</p>` : ""}
+        </div>
+
+        <div class="summary">
+            <strong>মোট কাস্টমার:</strong> ${filtered.length}
+            &nbsp;&nbsp;&nbsp;
+            <strong>মোট বকেয়া:</strong> ৳ ${formatMoney(total)}
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Customer</th>
+                    <th>Mobile</th>
+                    <th>Due</th>
+                    <th>Date</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+        </table>
+
+        <p class="signature">কাস্টমারের স্বাক্ষর: ____________________</p>
+        `
+    );
+}
+
+
+// ======================================
+// PRINT DUE COLLECTION REPORT
+// ======================================
+
+function printDuePaymentsReport() {
+
+    const recent =
+        duePayments
+        .slice()
+        .reverse();
+
+    const total =
+        recent.reduce(function(sum, item) {
+            return sum + Number(item.amount || 0);
+        }, 0);
+
+    const rows =
+        recent.length
+        ? recent.map(function(item, index) {
+
+            return `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${escapePrint(item.date || "-")}<br>${escapePrint(item.time || "")}</td>
+                    <td>${escapePrint(item.name || "-")}</td>
+                    <td>${escapePrint(item.phone || "-")}</td>
+                    <td>৳ ${formatMoney(item.amount)}</td>
+                </tr>
+            `;
+
+        }).join("")
+        : `
+            <tr>
+                <td colspan="5" style="text-align:center;">
+                    কোনো Payment Data নেই
+                </td>
+            </tr>
+        `;
+
+    openPrintWindow(
+        "Due Collection Report",
+        `
+        <div class="report-head">
+            <h1>Mahmud Telecom</h1>
+            <h2>Due Collection Report</h2>
+            <p>তারিখ: ${new Date().toLocaleDateString("en-GB")}</p>
+        </div>
+
+        <div class="summary">
+            <strong>মোট আদায়:</strong> ৳ ${formatMoney(total)}
+            &nbsp;&nbsp;&nbsp;
+            <strong>মোট রেকর্ড:</strong> ${recent.length}
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date / Time</th>
+                    <th>Customer</th>
+                    <th>Mobile</th>
+                    <th>Paid</th>
+                </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+        </table>
+        `
+    );
+}
+
+
+// ======================================
+// PRINT HELPERS
+// ======================================
+
+function escapePrint(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+
+function openPrintWindow(title, content) {
+
+    const printWindow =
+        window.open(
+            "",
+            "_blank",
+            "width=1000,height=750"
+        );
+
+    if (!printWindow) {
+
+        alert(
+            "⚠️ Print window খুলতে পারিনি। Browser-এর popup অনুমতি দিন।"
+        );
+
+        return;
+
+    }
+
+    printWindow.document.open();
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="bn">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${escapePrint(title)}</title>
+            <style>
+                *{box-sizing:border-box}
+                body{
+                    font-family:"Noto Sans Bengali","Hind Siliguri","SolaimanLipi",Arial,sans-serif;
+                    margin:30px;
+                    color:#111;
+                    background:#fff;
+                    line-height:1.5;
+                }
+                .report-head{
+                    text-align:center;
+                    margin-bottom:18px;
+                }
+                .report-head h1{
+                    margin:0;
+                    font-size:26px;
+                }
+                .report-head h2{
+                    margin:4px 0;
+                    font-size:21px;
+                }
+                .report-head p{
+                    margin:3px 0;
+                }
+                .summary{
+                    margin:12px 0 18px;
+                    padding:10px;
+                    border:1px solid #777;
+                }
+                table{
+                    width:100%;
+                    border-collapse:collapse;
+                }
+                th,td{
+                    border:1px solid #333;
+                    padding:7px 8px;
+                    text-align:left;
+                    vertical-align:top;
+                }
+                th{
+                    background:#eee;
+                }
+                .signature{
+                    margin-top:45px;
+                    text-align:right;
+                }
+                @media print{
+                    body{margin:12mm}
+                }
+            </style>
+        </head>
+        <body>
+            ${content}
+            <script>
+                window.onload = function(){
+                    setTimeout(function(){
+                        window.print();
+                    }, 250);
+                };
+            <\/script>
+        </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+}
+
+
 // ======================================
 // Logout
 // ======================================
@@ -1030,6 +1307,37 @@ if (logoutBtn) {
                 "login.html";
 
         }
+    );
+
+}
+
+
+
+// ======================================
+// PRINT BUTTONS
+// ======================================
+
+const printDueBtn =
+    document.getElementById("printDueBtn");
+
+if (printDueBtn) {
+
+    printDueBtn.addEventListener(
+        "click",
+        printDueReport
+    );
+
+}
+
+
+const printDuePaymentsBtn =
+    document.getElementById("printDuePaymentsBtn");
+
+if (printDuePaymentsBtn) {
+
+    printDuePaymentsBtn.addEventListener(
+        "click",
+        printDuePaymentsReport
     );
 
 }

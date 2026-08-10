@@ -16,6 +16,84 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+
+
+    <style>
+        .due-toolbar{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+        .due-toolbar input{
+            min-width:220px;
+        }
+
+        @media(max-width:600px){
+            .due-toolbar{
+                width:100%;
+            }
+            .due-toolbar input,
+            .due-toolbar button{
+                width:100%;
+            }
+        }
+
+        @media print{
+            .top-header,
+            .sidebar,
+            .dashboard-header,
+            form,
+            .cards,
+            .due-toolbar,
+            #dueSearch,
+            #printDueBtn,
+            #printDuePaymentsBtn,
+            td:last-child,
+            th:last-child,
+            .dashboard-box:not(#dueReportSection):not(#duePaymentsSection){
+                display:none !important;
+            }
+
+            body{
+                background:#fff !important;
+                color:#000 !important;
+            }
+
+            .dashboard-container,
+            .dashboard-box,
+            .table-container{
+                width:100% !important;
+                max-width:none !important;
+                margin:0 !important;
+                padding:0 !important;
+                box-shadow:none !important;
+                border:none !important;
+            }
+
+            table{
+                width:100% !important;
+                border-collapse:collapse !important;
+            }
+
+            th, td{
+                border:1px solid #333 !important;
+                padding:7px !important;
+            }
+
+            .print-report-title{
+                display:block !important;
+                text-align:center;
+                margin-bottom:12px;
+            }
+        }
+
+        .print-report-title{
+            display:none;
+        }
+    </style>
+
 </head>
 
 
@@ -329,7 +407,9 @@ if(localStorage.getItem("isLoggedIn") !== "true"){
              SEARCH
         ======================================= -->
 
-        <section class="dashboard-box">
+        <section class="dashboard-box" id="dueReportSection">
+
+            <div class="print-report-title">Mahmud Telecom<br><strong>Customer Due Report</strong></div>
 
             <div class="section-header">
 
@@ -337,11 +417,23 @@ if(localStorage.getItem("isLoggedIn") !== "true"){
                     📋 Due List
                 </h2>
 
+                <div class="due-toolbar">
 
-                <input
-                    type="search"
-                    id="dueSearch"
-                    placeholder="Customer খুঁজুন...">
+                    <input
+                        type="search"
+                        id="dueSearch"
+                        placeholder="Customer খুঁজুন...">
+
+                    <button
+                        type="button"
+                        id="printDueBtn"
+                        class="btn btn-primary">
+
+                        🖨️ Print Due Report
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -416,11 +508,26 @@ if(localStorage.getItem("isLoggedIn") !== "true"){
              PAYMENT HISTORY
         ======================================= -->
 
-        <section class="dashboard-box">
+        <section class="dashboard-box" id="duePaymentsSection">
 
-            <h2>
-                💵 Recent Due Payments
-            </h2>
+            <div class="print-report-title">Mahmud Telecom<br><strong>Due Collection Report</strong></div>
+
+            <div class="section-header">
+
+                <h2>
+                    💵 Recent Due Payments
+                </h2>
+
+                <button
+                    type="button"
+                    id="printDuePaymentsBtn"
+                    class="btn btn-primary">
+
+                    🖨️ Print Collection Report
+
+                </button>
+
+            </div>
 
 
             <div class="table-container">
