@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Mobile Banking | Mahmud Telecom V8</title>
+    <title>Digital Services | Mahmud Telecom V8</title>
 
     <link
         rel="stylesheet"
@@ -332,6 +332,13 @@
 
 
 <body>
+<script>
+if (localStorage.getItem("isLoggedIn") !== "true") {
+    alert("⚠️ আগে লগইন করুন");
+    location.href = "login.html";
+}
+</script>
+
 
 
 <!-- =========================================
@@ -348,12 +355,11 @@
     <div class="mb-header">
 
         <h1>
-            💳 Mobile Banking & Accounts
+            💳 Mobile Banking & Digital Services
         </h1>
 
         <p>
-            bKash • Nagad • Rocket • mCash •
-            CellFin • Bank • Cash
+            বিকাশ • নগদ • রকেট • বিদ্যুৎ বিল • ব্যাংক • mCash • CellFin • Cash
         </p>
 
     </div>
@@ -496,6 +502,44 @@
 
 
     <!-- =====================================
+         DIGITAL SERVICE SHORTCUTS
+    ====================================== -->
+
+    <div class="mb-box">
+        <h2>⚡ ডিজিটাল সার্ভিস</h2>
+        <p style="color:#666;margin-top:-6px;">
+            বিকাশ, নগদ, রকেট, বিল পেমেন্ট, ব্যাংক ও অন্যান্য সেবা
+        </p>
+
+        <div class="mb-service-grid">
+            <button type="button" class="mb-service-card bkash-card" data-service-account="bKash">
+                <span>🟣</span><strong>bKash</strong><small>বিকাশ</small>
+            </button>
+            <button type="button" class="mb-service-card nagad-card" data-service-account="Nagad">
+                <span>🟠</span><strong>Nagad</strong><small>নগদ</small>
+            </button>
+            <button type="button" class="mb-service-card rocket-card" data-service-account="Rocket">
+                <span>🔵</span><strong>Rocket</strong><small>রকেট</small>
+            </button>
+            <button type="button" class="mb-service-card bank-card" data-service-service="Electricity Bill">
+                <span>💡</span><strong>বিদ্যুৎ বিল</strong><small>Bill Payment</small>
+            </button>
+            <button type="button" class="mb-service-card bank-card" data-service-service="Bank Deposit">
+                <span>🏦</span><strong>ব্যাংক</strong><small>জমা / উত্তোলন</small>
+            </button>
+            <button type="button" class="mb-service-card cellfin-card" data-service-account="CellFin">
+                <span>🔷</span><strong>CellFin</strong><small>ডিজিটাল ব্যাংকিং</small>
+            </button>
+            <button type="button" class="mb-service-card mcash-card" data-service-account="mCash">
+                <span>🟢</span><strong>mCash</strong><small>মোবাইল ব্যাংকিং</small>
+            </button>
+            <button type="button" class="mb-service-card cash-card" data-service-service="Other">
+                <span>💵</span><strong>অন্যান্য</strong><small>অন্যান্য সেবা</small>
+            </button>
+        </div>
+    </div>
+
+    <!-- =====================================
          NEW TRANSACTION
     ====================================== -->
 
@@ -634,25 +678,15 @@
                             নির্বাচন করুন
                         </option>
 
-                        <option value="Send Money">
-                            Send Money
-                        </option>
+                        <option value="Send Money">📤 Send Money / সেন্ড মানি</option>
 
-                        <option value="Cash In">
-                            Cash In
-                        </option>
+                        <option value="Cash In">💰 Cash In / ক্যাশ ইন</option>
 
-                        <option value="Cash Out">
-                            Cash Out
-                        </option>
+                        <option value="Cash Out">💸 Cash Out / ক্যাশ আউট</option>
 
-                        <option value="Payment">
-                            Payment
-                        </option>
+                        <option value="Payment">💳 Payment / পেমেন্ট</option>
 
-                        <option value="Recharge">
-                            Recharge
-                        </option>
+                        <option value="Recharge">📱 Mobile Recharge / রিচার্জ</option>
 
                         <option value="Add Money">
                             Add Money
@@ -662,13 +696,12 @@
                             Transfer
                         </option>
 
-                        <option value="Bank Deposit">
-                            Bank Deposit
-                        </option>
-
-                        <option value="Bank Withdrawal">
-                            Bank Withdrawal
-                        </option>
+                        <option value="Electricity Bill">💡 Electricity Bill / বিদ্যুৎ বিল</option>
+                        <option value="Gas Bill">🔥 Gas Bill / গ্যাস বিল</option>
+                        <option value="Water Bill">💧 Water Bill / পানি বিল</option>
+                        <option value="Internet Bill">🌐 Internet Bill / ইন্টারনেট বিল</option>
+                        <option value="Bank Deposit">🏦 Bank Deposit / ব্যাংক জমা</option>
+                        <option value="Bank Withdrawal">🏦 Bank Withdrawal / ব্যাংক উত্তোলন</option>
 
                         <option value="Other">
                             Other
@@ -862,6 +895,20 @@
      JAVASCRIPT
 ========================================== -->
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mb-service-card").forEach(function (card) {
+        card.addEventListener("click", function () {
+            const account = card.getAttribute("data-service-account");
+            const service = card.getAttribute("data-service-service");
+            if (account) document.getElementById("mbAccount").value = account;
+            if (service) document.getElementById("mbService").value = service;
+            const form = document.getElementById("newMobileTransactionForm");
+            if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    });
+});
+</script>
 <script src="js/mobile-banking.js"></script>
 
 
