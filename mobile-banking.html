@@ -326,7 +326,98 @@
 
         }
 
-    </style>
+    
+        /* =====================================
+           PRINT TRANSACTION REPORT
+        ====================================== */
+        .mb-print-title,
+        .mb-print-summary {
+            display: none;
+        }
+
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 10mm;
+            }
+
+            body {
+                background: #fff !important;
+            }
+
+            .top-header,
+            .sidebar,
+            .dashboard-header,
+            .mb-header,
+            .mb-accounts,
+            .mb-box:first-of-type,
+            .mb-search,
+            .mb-print-btn,
+            .mb-delete,
+            .mb-table th:last-child,
+            .mb-table td:last-child {
+                display: none !important;
+            }
+
+            .mb-page {
+                padding: 0 !important;
+                background: #fff !important;
+                min-height: auto !important;
+            }
+
+            .mb-box {
+                box-shadow: none !important;
+                border: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .mb-box h2 {
+                display: none !important;
+            }
+
+            .mb-print-title {
+                display: block !important;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 700;
+                margin: 0 0 5px;
+            }
+
+            .mb-print-summary {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 12px;
+                font-size: 12px;
+            }
+
+            .mb-table-wrap {
+                overflow: visible !important;
+            }
+
+            .mb-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+            }
+
+            .mb-table th,
+            .mb-table td {
+                border: 1px solid #333 !important;
+                padding: 6px !important;
+                color: #000 !important;
+                background: #fff !important;
+                font-size: 11px !important;
+            }
+
+            .mb-table th {
+                font-weight: 700 !important;
+            }
+
+            #mbNoData {
+                display: none !important;
+            }
+        }
+</style>
 
 </head>
 
@@ -811,9 +902,17 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
 
     <div class="mb-box">
 
-        <h2>
-            📋 Transaction History
-        </h2>
+        <div class="mb-print-title">Mahmud Telecom<br>Transaction Report</div>
+        <div class="mb-print-summary" id="mbPrintSummary"></div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <h2 style="margin:0;">
+                📋 Transaction History
+            </h2>
+            <button type="button" id="mbPrintBtn" class="mb-print-btn" style="background:#1976d2;color:#fff;border:0;border-radius:6px;padding:9px 15px;cursor:pointer;font-weight:700;">
+                🖨️ Print Report
+            </button>
+        </div>
 
 
         <div class="mb-search">

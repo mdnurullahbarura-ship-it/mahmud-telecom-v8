@@ -826,3 +826,64 @@ document.addEventListener("DOMContentLoaded", function () {
     updateBalances();
 
 });
+
+// ======================================================
+// PRINT TRANSACTION REPORT
+// ======================================================
+document.addEventListener("DOMContentLoaded", function () {
+
+    const printBtn = document.getElementById("mbPrintBtn");
+    const search = document.getElementById("mbSearch");
+    const summary = document.getElementById("mbPrintSummary");
+
+    if (!printBtn) return;
+
+    printBtn.addEventListener("click", function () {
+
+        const keyword = search ? search.value.toLowerCase().trim() : "";
+        const storageKey = "mahmudMobileBankingTransactions";
+        const allTransactions =
+            JSON.parse(localStorage.getItem(storageKey) || "[]");
+
+        const filtered = allTransactions.filter(function (item) {
+            const text = [
+                item.customer,
+                item.mobile,
+                item.account,
+                item.type,
+                item.service,
+                item.transactionId,
+                item.note
+            ].join(" ").toLowerCase();
+
+            return text.includes(keyword);
+        });
+
+        let totalAmount = 0;
+        let totalCharge = 0;
+
+        filtered.forEach(function (item) {
+            totalAmount += Number(item.amount || 0);
+            totalCharge += Number(item.charge || 0);
+        });
+
+        if (summary) {
+            summary.textContent =
+                "তারিখ: " + new Date().toLocaleString("bn-BD") +
+                " | মোট লেনদেন: " + filtered.length +
+                " | মোট Amount: ৳ " + totalAmount.toLocaleString("en-BD") +
+                " | মোট Charge: ৳ " + totalCharge.toLocaleString("en-BD") +
+                (keyword ? " | Search: " + keyword : "");
+        }
+
+        // Render current filter before printing.
+        const event = new Event("input", { bubbles: true });
+        if (search) search.dispatchEvent(event);
+
+        setTimeout(function () {
+            window.print();
+        }, 150);
+    });
+
+});
+
