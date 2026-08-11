@@ -1,310 +1,123 @@
 <!DOCTYPE html>
+
 <html lang="bn">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Settings | Mahmud Telecom</title>
-
-<link rel="stylesheet" href="css/dashboard.css">
-<link rel="stylesheet" href="css/products.css">
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/responsive.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<link href="css/dashboard.css" rel="stylesheet"/>
+<link href="css/products.css" rel="stylesheet"/>
+<link href="css/theme.css" rel="stylesheet"/>
+<link href="css/responsive.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
 </head>
-
-<body>
-
-<script>
-
-if(localStorage.getItem("isLoggedIn")!=="true"){
-
-    alert("⚠️ আগে লগইন করুন");
-
-    location.href="login.html";
-
-}
-
-</script>
+<body><script src="js/core.js"></script>
 
 <div class="dashboard">
-
-<aside class="sidebar">
-
-<div class="logo">
-
-<img src="images/logo.png" alt="Logo">
-
-<h2>Mahmud Telecom</h2>
-
-<p>Shop Management V8</p>
-
-</div>
-
-<ul>
-
-<li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
-<li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
-<li><a href="pos.html"><i class="fas fa-cash-register"></i> POS</a></li>
-<!-- Due Management -->
-
-<li>
-    <a href="due.html">
-
-        <i class="fas fa-hand-holding-dollar"></i>
-
-        Due
-
-    </a>
-</li>
-
-
-<!-- Mobile Recharge -->
-
-<li>
-    <a href="recharge.html">
-
-        <i class="fas fa-mobile-screen-button"></i>
-
-        Recharge
-
-    </a>
-</li>
-<li>
-    <a href="mobile-banking.html">
-        <i class="fas fa-wallet"></i>
-        Mobile Banking
-    </a>
-</li>
-
-<li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
-<li><a href="purchase.html"><i class="fas fa-cart-plus"></i> Purchase</a></li>
-<li><a href="suppliers.html"><i class="fas fa-truck"></i> Suppliers</a></li>
-<li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
-<li><a href="settings.html" class="active"><i class="fas fa-cog"></i> Settings</a></li>
-<li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
-
-</ul>
-
-</aside>
-
+<aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a></li><li><a href="products.html"><i class="fas fa-box"></i><span>Products</span></a></li><li><a href="pos.html"><i class="fas fa-cash-register"></i><span>POS</span></a></li><li><a href="purchase.html"><i class="fas fa-cart-plus"></i><span>Purchase</span></a></li><li><a href="due.html"><i class="fas fa-hand-holding-dollar"></i><span>Due</span></a></li><li><a href="recharge.html"><i class="fas fa-mobile-screen-button"></i><span>Recharge</span></a></li><li><a href="mobile-banking.html"><i class="fas fa-wallet"></i><span>Mobile Banking</span></a></li><li><a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a></li><li><a href="suppliers.html"><i class="fas fa-truck"></i><span>Suppliers</span></a></li><li><a href="reports.html"><i class="fas fa-chart-line"></i><span>Reports</span></a></li><li><a class="active" href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li></ul></aside>
 <main class="main-content">
-
 <header class="topbar">
-
 <h1>⚙️ Settings</h1>
-
 <p>দোকানের তথ্য ও সিস্টেম সেটিংস পরিচালনা করুন</p>
-
 </header>
 <!-- ==========================================
 SHOP SETTINGS
 ========================================== -->
-
 <section class="card">
-
-    <h2>🏪 Shop Information</h2>
-
-    <form id="settingsForm" class="product-form">
-
-        <div class="form-grid">
-
-            <div class="form-group">
-
-                <label>🏪 Shop Name</label>
-
-                <input
-                    type="text"
-                    id="shopName"
-                    placeholder="Mahmud Telecom"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>👤 Owner Name</label>
-
-                <input
-                    type="text"
-                    id="ownerName"
-                    placeholder="Owner Name">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>📞 Mobile Number</label>
-
-                <input
-                    type="tel"
-                    id="shopMobile"
-                    placeholder="01XXXXXXXXX">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>📧 Email</label>
-
-                <input
-                    type="email"
-                    id="shopEmail"
-                    placeholder="example@email.com">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>📍 Shop Address</label>
-
-                <textarea
-                    id="shopAddress"
-                    rows="3"
-                    placeholder="দোকানের সম্পূর্ণ ঠিকানা"></textarea>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>🧾 Invoice Footer</label>
-
-                <textarea
-                    id="invoiceFooter"
-                    rows="3"
-                    placeholder="ধন্যবাদ, আবার আসবেন।"></textarea>
-
-            </div>
-
-        </div>
-
-        <div class="mt-20">
-
-            <button
-                type="submit"
-                class="dashboard-btn">
+<h2>🏪 Shop Information</h2>
+<form class="product-form" id="settingsForm">
+<div class="form-grid">
+<div class="form-group">
+<label>🏪 Shop Name</label>
+<input id="shopName" placeholder="Mahmud Telecom" required="" type="text"/>
+</div>
+<div class="form-group">
+<label>👤 Owner Name</label>
+<input id="ownerName" placeholder="Owner Name" type="text"/>
+</div>
+<div class="form-group">
+<label>📞 Mobile Number</label>
+<input id="shopMobile" placeholder="01XXXXXXXXX" type="tel"/>
+</div>
+<div class="form-group">
+<label>📧 Email</label>
+<input id="shopEmail" placeholder="example@email.com" type="email"/>
+</div>
+<div class="form-group">
+<label>📍 Shop Address</label>
+<textarea id="shopAddress" placeholder="দোকানের সম্পূর্ণ ঠিকানা" rows="3"></textarea>
+</div>
+<div class="form-group">
+<label>🧾 Invoice Footer</label>
+<textarea id="invoiceFooter" placeholder="ধন্যবাদ, আবার আসবেন।" rows="3"></textarea>
+</div>
+</div>
+<div class="mt-20">
+<button class="dashboard-btn" type="submit">
 
                 💾 Save Settings
 
             </button>
-
-            <button
-                type="reset"
-                class="btn-secondary">
+<button class="btn-secondary" type="reset">
 
                 🔄 Reset
 
             </button>
-
-        </div>
-
-    </form>
-
+</div>
+</form>
 </section>
 <!-- ==========================================
 SECURITY SETTINGS
 ========================================== -->
-
 <section class="card">
-
-    <h2>🔒 Security</h2>
-
-    <form id="passwordForm" class="product-form">
-
-        <div class="form-grid">
-
-            <div class="form-group">
-                <label>Current Password</label>
-                <input
-                    type="password"
-                    id="currentPassword"
-                    placeholder="বর্তমান পাসওয়ার্ড">
-            </div>
-
-            <div class="form-group">
-                <label>New Password</label>
-                <input
-                    type="password"
-                    id="newPassword"
-                    placeholder="নতুন পাসওয়ার্ড">
-            </div>
-
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="পাসওয়ার্ড পুনরায় লিখুন">
-            </div>
-
-        </div>
-
-        <button
-            type="submit"
-            class="dashboard-btn">
+<h2>🔒 Security</h2>
+<form class="product-form" id="passwordForm">
+<div class="form-grid">
+<div class="form-group">
+<label>Current Password</label>
+<input id="currentPassword" placeholder="বর্তমান পাসওয়ার্ড" type="password"/>
+</div>
+<div class="form-group">
+<label>New Password</label>
+<input id="newPassword" placeholder="নতুন পাসওয়ার্ড" type="password"/>
+</div>
+<div class="form-group">
+<label>Confirm Password</label>
+<input id="confirmPassword" placeholder="পাসওয়ার্ড পুনরায় লিখুন" type="password"/>
+</div>
+</div>
+<button class="dashboard-btn" type="submit">
 
             🔒 Change Password
 
         </button>
-
-    </form>
-
+</form>
 </section>
-
 <!-- ==========================================
 BACKUP & RESTORE
 ========================================== -->
-
 <section class="card">
-
-    <h2>💾 Backup & Restore</h2>
-
-    <div class="mt-20">
-
-        <button
-            id="backupBtn"
-            class="dashboard-btn">
+<h2>💾 Backup &amp; Restore</h2>
+<div class="mt-20">
+<button class="dashboard-btn" id="backupBtn">
 
             📥 Backup Data
 
         </button>
-
-        <button
-            id="restoreBtn"
-            class="btn-secondary">
+<button class="btn-secondary" id="restoreBtn">
 
             📤 Restore Data
-<input
-    type="file"
-    id="restoreFile"
-    accept=".json"
-    style="display:none;">
-        </button>
-
-        <button
-            id="resetDataBtn"
-            class="btn-delete">
+<input accept=".json" id="restoreFile" style="display:none;" type="file"/>
+</button>
+<button class="btn-delete" id="resetDataBtn">
 
             🗑️ Reset All Data
 
         </button>
-
-    </div>
-
-</section>
-
-</main>
-
 </div>
-
+</section>
+</main>
+</div>
 <script src="js/settings.js"></script>
-
-</body>
-
+<script src="js/report-tools.js"></script></body>
 </html>

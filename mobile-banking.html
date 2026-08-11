@@ -1,33 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="bn">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Digital Services | Mahmud Telecom V8</title>
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/dashboard.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/responsive.css"
-    >
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Services | Mahmud Telecom V8</title>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/dashboard.css" rel="stylesheet"/>
+<link href="css/responsive.css" rel="stylesheet"/>
+<style>
 
         /* =====================================
            NEW MOBILE BANKING SYSTEM
@@ -432,583 +413,326 @@
                 display: none !important;
             }
         }
+
+/* ===== Digital Services premium cards ===== */
+.mb-service-grid{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:14px;margin-top:16px}.mb-service-card{border:1px solid #e2e8f0!important;border-radius:16px!important;background:linear-gradient(145deg,#fff,#f8fbff)!important;padding:18px 12px!important;min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;box-shadow:0 8px 20px rgba(15,23,42,.08);transition:.25s;position:relative;overflow:hidden}.mb-service-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(15,23,42,.14)}.mb-service-card span{font-size:28px}.mb-service-card strong{font-size:17px;color:#0f172a}.mb-service-card small{color:#64748b;font-size:12px}.mb-service-card.bkash-card{border-top:4px solid #8e24aa!important}.mb-service-card.nagad-card{border-top:4px solid #ff9800!important}.mb-service-card.rocket-card{border-top:4px solid #1976d2!important}.mb-service-card.mcash-card{border-top:4px solid #43a047!important}.mb-service-card.cellfin-card{border-top:4px solid #00897b!important}.mb-service-card.bank-card{border-top:4px solid #455a64!important}.mb-service-card.cash-card{border-top:4px solid #2e7d32!important}.mb-account{transition:.25s;border:1px solid #e2e8f0}.mb-account:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(15,23,42,.12)}@media(max-width:1000px){.mb-service-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.mb-service-grid{grid-template-columns:repeat(2,1fr);gap:8px}.mb-service-card{min-height:95px;padding:12px 8px!important}}
+
+
+.mb-account.bkash-card{background:linear-gradient(145deg,#fff,#f8effb)}.mb-account.nagad-card{background:linear-gradient(145deg,#fff,#fff7e8)}.mb-account.rocket-card{background:linear-gradient(145deg,#fff,#eef6ff)}.mb-account.mcash-card{background:linear-gradient(145deg,#fff,#eefaf0)}.mb-account.cellfin-card{background:linear-gradient(145deg,#fff,#ecfbf8)}.mb-account.bank-card{background:linear-gradient(145deg,#fff,#f2f5f7)}.mb-account.cash-card{background:linear-gradient(145deg,#fff,#effaf1)}
 </style>
-
-</head>
-
-
-<body>
-<script>
-if (localStorage.getItem("isLoggedIn") !== "true") {
-    alert("⚠️ আগে লগইন করুন");
-    location.href = "login.html";
-}
-</script>
-
-
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/><style>
+    .mb-page{margin-left:260px}
+    @media(max-width:768px){.mb-page{margin-left:0}}
+    </style></head>
+<body><aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a></li><li><a href="products.html"><i class="fas fa-box"></i><span>Products</span></a></li><li><a href="pos.html"><i class="fas fa-cash-register"></i><span>POS</span></a></li><li><a href="purchase.html"><i class="fas fa-cart-plus"></i><span>Purchase</span></a></li><li><a href="due.html"><i class="fas fa-hand-holding-dollar"></i><span>Due</span></a></li><li><a href="recharge.html"><i class="fas fa-mobile-screen-button"></i><span>Recharge</span></a></li><li><a class="active" href="mobile-banking.html"><i class="fas fa-wallet"></i><span>Mobile Banking</span></a></li><li><a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a></li><li><a href="suppliers.html"><i class="fas fa-truck"></i><span>Suppliers</span></a></li><li><a href="reports.html"><i class="fas fa-chart-line"></i><span>Reports</span></a></li><li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li></ul></aside><script src="js/core.js"></script>
 <!-- =========================================
      PAGE
 ========================================== -->
-
 <div class="mb-page">
-
-
-    <!-- =====================================
+<!-- =====================================
          HEADER
     ====================================== -->
-
-    <div class="mb-header">
-
-        <h1>
-            💳 Mobile Banking & Digital Services
+<div class="mb-header">
+<h1>
+            💳 Mobile Banking &amp; Digital Services
         </h1>
-
-        <p>
+<p>
             বিকাশ • নগদ • রকেট • বিদ্যুৎ বিল • ব্যাংক • mCash • CellFin • Cash
         </p>
-
-    </div>
-
-
-    <!-- =====================================
+</div>
+<!-- =====================================
          ACCOUNT SUMMARY
     ====================================== -->
-
-    <div class="mb-accounts">
-
-
-        <div class="mb-account bkash-card">
-
-            <h3>🟣 bKash</h3>
-
-            <div
-                class="mb-balance"
-                id="mbBkashBalance"
-            >
+<div class="mb-accounts">
+<div class="mb-account bkash-card">
+<h3>🟣 bKash</h3>
+<div class="mb-balance" id="mbBkashBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-        <div class="mb-account nagad-card">
-
-            <h3>🟠 Nagad</h3>
-
-            <div
-                class="mb-balance"
-                id="mbNagadBalance"
-            >
+</div>
+<div class="mb-account nagad-card">
+<h3>🟠 Nagad</h3>
+<div class="mb-balance" id="mbNagadBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-        <div class="mb-account rocket-card">
-
-            <h3>🔵 Rocket</h3>
-
-            <div
-                class="mb-balance"
-                id="mbRocketBalance"
-            >
+</div>
+<div class="mb-account rocket-card">
+<h3>🔵 Rocket</h3>
+<div class="mb-balance" id="mbRocketBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-        <div class="mb-account mcash-card">
-
-            <h3>🟢 Islami Bank mCash</h3>
-
-            <div
-                class="mb-balance"
-                id="mbMcashBalance"
-            >
+</div>
+<div class="mb-account mcash-card">
+<h3>🟢 Islami Bank mCash</h3>
+<div class="mb-balance" id="mbMcashBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-        <div class="mb-account cellfin-card">
-
-            <h3>🔷 CellFin</h3>
-
-            <div
-                class="mb-balance"
-                id="mbCellfinBalance"
-            >
+</div>
+<div class="mb-account cellfin-card">
+<h3>🔷 CellFin</h3>
+<div class="mb-balance" id="mbCellfinBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-        <div class="mb-account bank-card">
-
-            <h3>🏦 Bank Account</h3>
-
-            <div
-                class="mb-balance"
-                id="mbBankBalance"
-            >
+</div>
+<div class="mb-account bank-card">
+<h3>🏦 Bank Account</h3>
+<div class="mb-balance" id="mbBankBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-        <div class="mb-account cash-card">
-
-            <h3>💵 Cash</h3>
-
-            <div
-                class="mb-balance"
-                id="mbCashBalance"
-            >
+</div>
+<div class="mb-account cash-card">
+<h3>💵 Cash</h3>
+<div class="mb-balance" id="mbCashBalance">
                 ৳ 0
             </div>
-
-            <small>
+<small>
                 Current Balance
             </small>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- =====================================
+</div>
+</div>
+<!-- =====================================
          DIGITAL SERVICE SHORTCUTS
     ====================================== -->
-
-    <div class="mb-box">
-        <h2>⚡ ডিজিটাল সার্ভিস</h2>
-        <p style="color:#666;margin-top:-6px;">
+<div class="mb-box">
+<h2>⚡ ডিজিটাল সার্ভিস</h2>
+<p style="color:#666;margin-top:-6px;">
             বিকাশ, নগদ, রকেট, বিল পেমেন্ট, ব্যাংক ও অন্যান্য সেবা
         </p>
-
-        <div class="mb-service-grid">
-            <button type="button" class="mb-service-card bkash-card" data-service-account="bKash">
-                <span>🟣</span><strong>bKash</strong><small>বিকাশ</small>
-            </button>
-            <button type="button" class="mb-service-card nagad-card" data-service-account="Nagad">
-                <span>🟠</span><strong>Nagad</strong><small>নগদ</small>
-            </button>
-            <button type="button" class="mb-service-card rocket-card" data-service-account="Rocket">
-                <span>🔵</span><strong>Rocket</strong><small>রকেট</small>
-            </button>
-            <button type="button" class="mb-service-card bank-card" data-service-service="Electricity Bill">
-                <span>💡</span><strong>বিদ্যুৎ বিল</strong><small>Bill Payment</small>
-            </button>
-            <button type="button" class="mb-service-card bank-card" data-service-service="Bank Deposit">
-                <span>🏦</span><strong>ব্যাংক</strong><small>জমা / উত্তোলন</small>
-            </button>
-            <button type="button" class="mb-service-card cellfin-card" data-service-account="CellFin">
-                <span>🔷</span><strong>CellFin</strong><small>ডিজিটাল ব্যাংকিং</small>
-            </button>
-            <button type="button" class="mb-service-card mcash-card" data-service-account="mCash">
-                <span>🟢</span><strong>mCash</strong><small>মোবাইল ব্যাংকিং</small>
-            </button>
-            <button type="button" class="mb-service-card cash-card" data-service-service="Other">
-                <span>💵</span><strong>অন্যান্য</strong><small>অন্যান্য সেবা</small>
-            </button>
-        </div>
-    </div>
-
-    <!-- =====================================
+<div class="mb-service-grid">
+<button class="mb-service-card bkash-card" data-service-account="bKash" type="button">
+<span>🟣</span><strong>bKash</strong><small>বিকাশ</small>
+</button>
+<button class="mb-service-card nagad-card" data-service-account="Nagad" type="button">
+<span>🟠</span><strong>Nagad</strong><small>নগদ</small>
+</button>
+<button class="mb-service-card rocket-card" data-service-account="Rocket" type="button">
+<span>🔵</span><strong>Rocket</strong><small>রকেট</small>
+</button>
+<button class="mb-service-card bank-card" data-service-service="Electricity Bill" type="button">
+<span>💡</span><strong>বিদ্যুৎ বিল</strong><small>Bill Payment</small>
+</button>
+<button class="mb-service-card bank-card" data-service-service="Bank Deposit" type="button">
+<span>🏦</span><strong>ব্যাংক</strong><small>জমা / উত্তোলন</small>
+</button>
+<button class="mb-service-card cellfin-card" data-service-account="CellFin" type="button">
+<span>🔷</span><strong>CellFin</strong><small>ডিজিটাল ব্যাংকিং</small>
+</button>
+<button class="mb-service-card mcash-card" data-service-account="mCash" type="button">
+<span>🟢</span><strong>mCash</strong><small>মোবাইল ব্যাংকিং</small>
+</button>
+<button class="mb-service-card cash-card" data-service-service="Other" type="button">
+<span>💵</span><strong>অন্যান্য</strong><small>অন্যান্য সেবা</small>
+</button>
+</div>
+</div>
+<!-- =====================================
          NEW TRANSACTION
     ====================================== -->
-
-    <div class="mb-box">
-
-        <h2>
+<div class="mb-box">
+<h2>
             ➕ নতুন লেনদেন
         </h2>
-
-
-        <form id="newMobileTransactionForm">
-
-
-            <div class="mb-form">
-
-
-                <!-- Customer -->
-
-                <div class="mb-field">
-
-                    <label>
+<form id="newMobileTransactionForm">
+<div class="mb-form">
+<!-- Customer -->
+<div class="mb-field">
+<label>
                         Customer Name
                     </label>
-
-                    <input
-                        type="text"
-                        id="mbCustomer"
-                        placeholder="Customer Name"
-                    >
-
-                </div>
-
-
-                <!-- Mobile -->
-
-                <div class="mb-field">
-
-                    <label>
+<input id="mbCustomer" placeholder="Customer Name" type="text"/>
+</div>
+<!-- Mobile -->
+<div class="mb-field">
+<label>
                         Mobile Number
                     </label>
-
-                    <input
-                        type="tel"
-                        id="mbMobile"
-                        placeholder="01XXXXXXXXX"
-                    >
-
-                </div>
-
-
-                <!-- Account -->
-
-                <div class="mb-field">
-
-                    <label>
+<input id="mbMobile" placeholder="01XXXXXXXXX" type="tel"/>
+</div>
+<!-- Account -->
+<div class="mb-field">
+<label>
                         Account / Method
                     </label>
-
-                    <select id="mbAccount">
-
-                        <option value="">
+<select id="mbAccount">
+<option value="">
                             নির্বাচন করুন
                         </option>
-
-                        <option value="bKash">
+<option value="bKash">
                             🟣 bKash
                         </option>
-
-                        <option value="Nagad">
+<option value="Nagad">
                             🟠 Nagad
                         </option>
-
-                        <option value="Rocket">
+<option value="Rocket">
                             🔵 Rocket
                         </option>
-
-                        <option value="mCash">
+<option value="mCash">
                             🟢 Islami Bank mCash
                         </option>
-
-                        <option value="CellFin">
+<option value="CellFin">
                             🔷 CellFin
                         </option>
-
-                        <option value="Bank Account">
+<option value="Bank Account">
                             🏦 Bank Account
                         </option>
-
-                        <option value="Cash">
+<option value="Cash">
                             💵 Cash
                         </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Transaction Type -->
-
-                <div class="mb-field">
-
-                    <label>
+</select>
+</div>
+<!-- Transaction Type -->
+<div class="mb-field">
+<label>
                         Transaction Type
                     </label>
-
-                    <select id="mbType">
-
-                        <option value="">
+<select id="mbType">
+<option value="">
                             নির্বাচন করুন
                         </option>
-
-                        <option value="Receive">
+<option value="Receive">
                             💰 Receive
                         </option>
-
-                        <option value="Payment">
+<option value="Payment">
                             💸 Payment
                         </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Service -->
-
-                <div class="mb-field">
-
-                    <label>
+</select>
+</div>
+<!-- Service -->
+<div class="mb-field">
+<label>
                         Service
                     </label>
-
-                    <select id="mbService">
-
-                        <option value="">
+<select id="mbService">
+<option value="">
                             নির্বাচন করুন
                         </option>
-
-                        <option value="Send Money">📤 Send Money / সেন্ড মানি</option>
-
-                        <option value="Cash In">💰 Cash In / ক্যাশ ইন</option>
-
-                        <option value="Cash Out">💸 Cash Out / ক্যাশ আউট</option>
-
-                        <option value="Payment">💳 Payment / পেমেন্ট</option>
-
-                        <option value="Recharge">📱 Mobile Recharge / রিচার্জ</option>
-
-                        <option value="Add Money">
+<option value="Send Money">📤 Send Money / সেন্ড মানি</option>
+<option value="Cash In">💰 Cash In / ক্যাশ ইন</option>
+<option value="Cash Out">💸 Cash Out / ক্যাশ আউট</option>
+<option value="Payment">💳 Payment / পেমেন্ট</option>
+<option value="Recharge">📱 Mobile Recharge / রিচার্জ</option>
+<option value="Add Money">
                             Add Money
                         </option>
-
-                        <option value="Transfer">
+<option value="Transfer">
                             Transfer
                         </option>
-
-                        <option value="Electricity Bill">💡 Electricity Bill / বিদ্যুৎ বিল</option>
-                        <option value="Gas Bill">🔥 Gas Bill / গ্যাস বিল</option>
-                        <option value="Water Bill">💧 Water Bill / পানি বিল</option>
-                        <option value="Internet Bill">🌐 Internet Bill / ইন্টারনেট বিল</option>
-                        <option value="Bank Deposit">🏦 Bank Deposit / ব্যাংক জমা</option>
-                        <option value="Bank Withdrawal">🏦 Bank Withdrawal / ব্যাংক উত্তোলন</option>
-
-                        <option value="Other">
+<option value="Electricity Bill">💡 Electricity Bill / বিদ্যুৎ বিল</option>
+<option value="Gas Bill">🔥 Gas Bill / গ্যাস বিল</option>
+<option value="Water Bill">💧 Water Bill / পানি বিল</option>
+<option value="Internet Bill">🌐 Internet Bill / ইন্টারনেট বিল</option>
+<option value="Bank Deposit">🏦 Bank Deposit / ব্যাংক জমা</option>
+<option value="Bank Withdrawal">🏦 Bank Withdrawal / ব্যাংক উত্তোলন</option>
+<option value="Other">
                             Other
                         </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Amount -->
-
-                <div class="mb-field">
-
-                    <label>
+</select>
+</div>
+<!-- Amount -->
+<div class="mb-field">
+<label>
                         Amount
                     </label>
-
-                    <input
-                        type="number"
-                        id="mbAmount"
-                        min="1"
-                        placeholder="৳ Amount"
-                    >
-
-                </div>
-
-
-                <!-- Charge -->
-
-                <div class="mb-field">
-
-                    <label>
+<input id="mbAmount" min="1" placeholder="৳ Amount" type="number"/>
+</div>
+<!-- Charge -->
+<div class="mb-field">
+<label>
                         Charge
                     </label>
-
-                    <input
-                        type="number"
-                        id="mbCharge"
-                        min="0"
-                        value="0"
-                        placeholder="৳ Charge"
-                    >
-
-                </div>
-
-
-                <!-- Transaction ID -->
-
-                <div class="mb-field">
-
-                    <label>
+<input id="mbCharge" min="0" placeholder="৳ Charge" type="number" value="0"/>
+</div>
+<!-- Transaction ID -->
+<div class="mb-field">
+<label>
                         Transaction ID
                     </label>
-
-                    <input
-                        type="text"
-                        id="mbTransactionId"
-                        placeholder="Transaction ID"
-                    >
-
-                </div>
-
-
-                <!-- Note -->
-
-                <div class="mb-field mb-full">
-
-                    <label>
+<input id="mbTransactionId" placeholder="Transaction ID" type="text"/>
+</div>
+<!-- Note -->
+<div class="mb-field mb-full">
+<label>
                         Note
                     </label>
-
-                    <textarea
-                        id="mbNote"
-                        rows="2"
-                        placeholder="প্রয়োজনে নোট লিখুন"
-                    ></textarea>
-
-                </div>
-
-
-                <!-- SAVE -->
-
-                <div class="mb-field mb-full">
-
-                    <button
-                        type="submit"
-                        class="mb-save"
-                    >
+<textarea id="mbNote" placeholder="প্রয়োজনে নোট লিখুন" rows="2"></textarea>
+</div>
+<!-- SAVE -->
+<div class="mb-field mb-full">
+<button class="mb-save" type="submit">
                         💾 Save Transaction
                     </button>
-
-                </div>
-
-
-            </div>
-
-
-        </form>
-
-    </div>
-
-
-    <!-- =====================================
+</div>
+</div>
+</form>
+</div>
+<!-- =====================================
          HISTORY
     ====================================== -->
-
-    <div class="mb-box">
-
-        <div class="mb-print-title">Mahmud Telecom<br>Transaction Report</div>
-        <div class="mb-print-summary" id="mbPrintSummary"></div>
-
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-            <h2 style="margin:0;">
+<div class="mb-box" id="mobileBankingReport">
+<div class="mb-print-title">Mahmud Telecom<br/>Transaction Report</div>
+<div class="mb-print-summary" id="mbPrintSummary"></div>
+<div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+<h2 style="margin:0;">
                 📋 Transaction History
             </h2>
-            <button type="button" id="mbPrintBtn" class="mb-print-btn" style="background:#1976d2;color:#fff;border:0;border-radius:6px;padding:9px 15px;cursor:pointer;font-weight:700;">
+<button class="mb-print-btn" id="mbPrintBtn" style="background:#1976d2;color:#fff;border:0;border-radius:6px;padding:9px 15px;cursor:pointer;font-weight:700;" type="button">
                 🖨️ Print Report
             </button>
-        </div>
-
-
-        <div class="mb-search">
-
-            <input
-                type="search"
-                id="mbSearch"
-                placeholder="Customer / Mobile / Account / Transaction ID খুঁজুন..."
-            >
-
-        </div>
-
-
-        <div class="mb-table-wrap">
-
-            <table class="mb-table">
-
-
-                <thead>
-
-                    <tr>
-
-                        <th>#</th>
-
-                        <th>Date</th>
-
-                        <th>Customer</th>
-
-                        <th>Mobile</th>
-
-                        <th>Account</th>
-
-                        <th>Type</th>
-
-                        <th>Service</th>
-
-                        <th>Amount</th>
-
-                        <th>Charge</th>
-
-                        <th>Transaction ID</th>
-
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="mbTransactionTable">
-
-                </tbody>
-
-
-            </table>
-
-        </div>
-
-
-        <div
-            id="mbNoData"
-            style="
+<div class="mt-report-tools"><button class="mt-print-btn" onclick="MahmudReportTools.printPage()" type="button">🖨️ Print</button><button class="mt-png-btn" onclick="MahmudReportTools.downloadPNG('#mobileBankingReport','Mahmud_Telecom_mobileBankingReport')" type="button">🖼️ PNG</button></div></div>
+<div class="mb-search">
+<input id="mbSearch" placeholder="Customer / Mobile / Account / Transaction ID খুঁজুন..." type="search"/>
+</div>
+<div class="mb-table-wrap">
+<table class="mb-table">
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Customer</th>
+<th>Mobile</th>
+<th>Account</th>
+<th>Type</th>
+<th>Service</th>
+<th>Amount</th>
+<th>Charge</th>
+<th>Transaction ID</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="mbTransactionTable">
+</tbody>
+</table>
+</div>
+<div id="mbNoData" style="
                 text-align:center;
                 padding:25px;
                 color:#777;
-            "
-        >
+            ">
             এখনো কোনো লেনদেন নেই
         </div>
-
-
-    </div>
-
-
 </div>
-
-
+</div>
 <!-- =========================================
      JAVASCRIPT
 ========================================== -->
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".mb-service-card").forEach(function (card) {
@@ -1024,8 +748,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script src="js/mobile-banking.js"></script>
-
-
-</body>
-
+<script src="js/report-tools.js"></script></body>
 </html>

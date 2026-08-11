@@ -1,337 +1,141 @@
 <!DOCTYPE html>
+
 <html lang="bn">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>POS | Mahmud Telecom</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="stylesheet" href="css/dashboard.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/dashboard.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
 </head>
-
-<body>
-
-<script>
-
-if(localStorage.getItem("isLoggedIn")!=="true"){
-
-    alert("⚠️ আগে লগইন করুন");
-
-    location.href="login.html";
-
-}
-
-</script>
+<body><script src="js/core.js"></script>
 
 <div class="dashboard">
-
 <!-- ======================
 SIDEBAR
 ====================== -->
-
-<aside class="sidebar">
-
-<div class="logo">
-
-<img src="images/logo.png" alt="Logo">
-
-<h2>Mahmud Telecom</h2>
-
-<p>Shop Management V8</p>
-
-</div>
-
-<ul>
-
-<li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
-
-<li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
-
-<li><a href="pos.html" class="active"><i class="fas fa-cash-register"></i> POS</a></li>
-
-<li><a href="purchase.html"><i class="fas fa-cart-plus"></i> Purchase</a></li>
-<!-- Due Management -->
-
-<li>
-    <a href="due.html">
-
-        <i class="fas fa-hand-holding-dollar"></i>
-
-        Due
-
-    </a>
-</li>
-
-
-<!-- Mobile Recharge -->
-
-<li>
-    <a href="recharge.html">
-
-        <i class="fas fa-mobile-screen-button"></i>
-
-        Recharge
-
-    </a>
-</li>
-<li>
-    <a href="mobile-banking.html">
-        <i class="fas fa-wallet"></i>
-        Mobile Banking
-    </a>
-</li>
-
-<li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
-
-<li><a href="suppliers.html"><i class="fas fa-truck"></i> Suppliers</a></li>
-
-<li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
-
-<li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-
-<li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
-
-</ul>
-
-</aside>
-
+<aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a></li><li><a href="products.html"><i class="fas fa-box"></i><span>Products</span></a></li><li><a class="active" href="pos.html"><i class="fas fa-cash-register"></i><span>POS</span></a></li><li><a href="purchase.html"><i class="fas fa-cart-plus"></i><span>Purchase</span></a></li><li><a href="due.html"><i class="fas fa-hand-holding-dollar"></i><span>Due</span></a></li><li><a href="recharge.html"><i class="fas fa-mobile-screen-button"></i><span>Recharge</span></a></li><li><a href="mobile-banking.html"><i class="fas fa-wallet"></i><span>Mobile Banking</span></a></li><li><a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a></li><li><a href="suppliers.html"><i class="fas fa-truck"></i><span>Suppliers</span></a></li><li><a href="reports.html"><i class="fas fa-chart-line"></i><span>Reports</span></a></li><li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li></ul></aside>
 <!-- ======================
 MAIN CONTENT
 ====================== -->
-
 <main class="main-content">
-
 <header class="topbar">
-
 <div>
-
 <h1>🛒 Point Of Sale (POS)</h1>
-
 <p>বিক্রয় পরিচালনা করুন</p>
-
 </div>
-
 <div class="top-actions">
-
-<input
-type="text"
-id="searchPOS"
-placeholder="🔍 পণ্য খুঁজুন...">
-
+<input id="searchPOS" placeholder="🔍 পণ্য খুঁজুন..." type="text"/>
 </div>
-
 </header>
 <!-- ==========================================
 POS LAYOUT
 ========================================== -->
-
 <div class="pos-grid">
-
-    <!-- ==========================
+<!-- ==========================
     PRODUCT LIST
     ========================== -->
-
-    <section class="card">
-
-        <h2>📦 Available Products</h2>
-
-        <div id="productList" class="product-list">
-
-            <p style="text-align:center;padding:30px;color:#777;">
+<section class="card">
+<h2>📦 Available Products</h2>
+<div class="product-list" id="productList">
+<p style="text-align:center;padding:30px;color:#777;">
                 কোনো পণ্য পাওয়া যায়নি
             </p>
-
-        </div>
-
-    </section>
-
-    <!-- ==========================
+</div>
+</section>
+<!-- ==========================
     SHOPPING CART
     ========================== -->
-
-    <section class="card">
-
-        <h2>🛒 Shopping Cart</h2>
-
-        <div id="cartItems" class="cart-items">
-
-            <p style="text-align:center;padding:30px;color:#777;">
+<section class="card">
+<h2>🛒 Shopping Cart</h2>
+<div class="cart-items" id="cartItems">
+<p style="text-align:center;padding:30px;color:#777;">
                 Cart খালি
             </p>
-
-        </div>
-
-        <hr style="margin:20px 0;">
-
-        <!-- Summary -->
-
-        <div class="cart-summary">
-
-            <p>
-                <strong>Subtotal :</strong>
-                <span id="subTotal">৳ 0</span>
-            </p>
-
-            <p>
-
-                <strong>Discount :</strong>
-
-                <input
-                    type="number"
-                    id="discount"
-                    value="0"
-                    min="0">
-
-            </p>
-
-            <p>
-
-                <strong>Total :</strong>
-
-                <span id="grandTotal">৳ 0</span>
-
-            </p>
-
-        </div>
-
-        <hr style="margin:20px 0;">
-
-        <!-- Payment -->
-
-        <div class="payment-box">
-
-            <label>💳 Payment Method</label>
-
-            <select id="paymentMethod">
-
-                <option value="Cash">💵 Cash</option>
-
-                <option value="bKash">📱 bKash</option>
-
-                <option value="Nagad">📱 Nagad</option>
-
-                <option value="Rocket">🚀 Rocket</option>
-
-                <option value="Card">💳 Card</option>
-
-            </select>
-
-        </div>
-
-        <div style="margin-top:20px;">
-
-            <button
-                id="checkoutBtn"
-                class="dashboard-btn"
-                style="width:100%;">
+</div>
+<hr style="margin:20px 0;"/>
+<!-- Summary -->
+<div class="cart-summary">
+<p>
+<strong>Subtotal :</strong>
+<span id="subTotal">৳ 0</span>
+</p>
+<p>
+<strong>Discount :</strong>
+<input id="discount" min="0" type="number" value="0"/>
+</p>
+<p>
+<strong>Total :</strong>
+<span id="grandTotal">৳ 0</span>
+</p>
+</div>
+<hr style="margin:20px 0;"/>
+<!-- Payment -->
+<div class="payment-box">
+<label>💳 Payment Method</label>
+<select id="paymentMethod">
+<option value="Cash">💵 Cash</option>
+<option value="bKash">📱 bKash</option>
+<option value="Nagad">📱 Nagad</option>
+<option value="Rocket">🚀 Rocket</option>
+<option value="Card">💳 Card</option>
+</select>
+</div>
+<div style="margin-top:20px;">
+<button class="dashboard-btn" id="checkoutBtn" style="width:100%;">
 
                 🧾 Complete Sale
 
             </button>
-
-        </div>
-
-    </section>
-
+</div>
+</section>
 </div>
 <!-- ==========================================
 CUSTOMER & INVOICE
 ========================================== -->
-
 <div class="pos-bottom-grid">
-
-    <!-- ==========================
+<!-- ==========================
     CUSTOMER INFO
     ========================== -->
-
-    <section class="card">
-
-        <h2>👤 Customer Information</h2>
-
-        <div class="form-group">
-
-            <label>Customer Name</label>
-
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Customer Name">
-
-        </div>
-
-        <div class="form-group mt-20">
-
-            <label>Mobile Number</label>
-
-            <input
-                type="text"
-                id="customerMobile"
-                placeholder="01XXXXXXXXX">
-
-        </div>
-
-        <div class="form-group mt-20">
-
-            <label>Sale Note</label>
-
-            <textarea
-                id="saleNote"
-                rows="4"
-                placeholder="Optional"></textarea>
-
-        </div>
-
-    </section>
-
-    <!-- ==========================
+<section class="card">
+<h2>👤 Customer Information</h2>
+<div class="form-group">
+<label>Customer Name</label>
+<input id="customerName" placeholder="Customer Name" type="text"/>
+</div>
+<div class="form-group mt-20">
+<label>Mobile Number</label>
+<input id="customerMobile" placeholder="01XXXXXXXXX" type="text"/>
+</div>
+<div class="form-group mt-20">
+<label>Sale Note</label>
+<textarea id="saleNote" placeholder="Optional" rows="4"></textarea>
+</div>
+</section>
+<!-- ==========================
     INVOICE PREVIEW
     ========================== -->
-
-    <section class="card">
-
-        <h2>🧾 Invoice Preview</h2>
-
-        <div id="invoicePreview">
-
-            <p style="text-align:center;padding:40px;color:#777;">
+<section class="card">
+<h2>🧾 Invoice Preview</h2>
+<div id="invoicePreview">
+<p style="text-align:center;padding:40px;color:#777;">
 
                 এখনো কোনো Invoice তৈরি হয়নি
 
             </p>
-
-        </div>
-
-        <div class="mt-20">
-
-            <button
-                id="printInvoice"
-                class="dashboard-btn">
+</div>
+<div class="mt-20">
+<button class="dashboard-btn" id="printInvoice">
 
                 🖨️ Print Invoice
 
             </button>
-
-        </div>
-
-    </section>
-
 </div>
-
+</section>
+</div>
 </main>
-
 </div>
-
 <script src="js/pos-v8.js"></script>
-
-</body>
-
+<script src="js/report-tools.js"></script></body>
 </html>

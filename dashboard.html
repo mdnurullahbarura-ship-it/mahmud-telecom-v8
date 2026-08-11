@@ -1,457 +1,226 @@
 <!DOCTYPE html>
+
 <html lang="bn">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Dashboard | Mahmud Telecom</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet" href="css/dashboard.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard | Mahmud Telecom</title>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/dashboard.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
 </head>
-
-<body>
-
-<script>
-
-if(localStorage.getItem("isLoggedIn")!=="true"){
-
-    alert("⚠️ আগে লগইন করুন");
-
-    location.href="login.html";
-
-}
-
-</script>
-
+<body><script src="js/core.js"></script>
 <div class="dashboard">
-
-    <!-- Sidebar -->
-
-    <aside class="sidebar">
-
-        <div class="logo">
-
-            <img src="images/logo.png" alt="Logo">
-
-            <h2>Mahmud Telecom</h2>
-
-        </div>
-
-        <ul>
-
-            <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
-
-            <li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
-
-            <li><a href="pos.html"><i class="fas fa-shopping-cart"></i> POS</a></li>
-
-            <li><a href="purchase.html"><i class="fas fa-cart-plus"></i> Purchase</a></li>
-<!-- Due Management -->
-
-<li>
-    <a href="due.html">
-
-        <i class="fas fa-hand-holding-dollar"></i>
-
-        Due
-
-    </a>
-</li>
-
-
-<!-- Mobile Recharge -->
-
-<li>
-    <a href="recharge.html">
-
-        <i class="fas fa-mobile-screen-button"></i>
-
-        Recharge
-
-    </a>
-</li>
-<li>
-    <a href="mobile-banking.html">
-        <i class="fas fa-wallet"></i>
-        Mobile Banking
-    </a>
-</li>
-
-            <li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
-
-            <li><a href="suppliers.html"><i class="fas fa-truck"></i> Suppliers</a></li>
-
-            <li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
-
-            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-
-        </ul>
-
-    </aside>
-
-    <!-- Main Content -->
-
-    <main class="main-content">
-
-        <!-- ==========================================
+<!-- Sidebar -->
+<aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a class="active" href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a></li><li><a href="products.html"><i class="fas fa-box"></i><span>Products</span></a></li><li><a href="pos.html"><i class="fas fa-cash-register"></i><span>POS</span></a></li><li><a href="purchase.html"><i class="fas fa-cart-plus"></i><span>Purchase</span></a></li><li><a href="due.html"><i class="fas fa-hand-holding-dollar"></i><span>Due</span></a></li><li><a href="recharge.html"><i class="fas fa-mobile-screen-button"></i><span>Recharge</span></a></li><li><a href="mobile-banking.html"><i class="fas fa-wallet"></i><span>Mobile Banking</span></a></li><li><a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a></li><li><a href="suppliers.html"><i class="fas fa-truck"></i><span>Suppliers</span></a></li><li><a href="reports.html"><i class="fas fa-chart-line"></i><span>Reports</span></a></li><li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li></ul></aside>
+<!-- Main Content -->
+<main class="main-content">
+<!-- ==========================================
      DASHBOARD TOPBAR
 ========================================== -->
-
 <header class="topbar">
-
-    <div class="topbar-left">
-
-        <h1>
+<div class="topbar-left">
+<h1>
             📊 Dashboard
         </h1>
-
-        <p>
+<p>
             Welcome back to Mahmud Telecom 👋
         </p>
-
-    </div>
-
-    <div class="topbar-right">
-
-        <div class="dashboard-date">
-            <i class="fas fa-calendar-alt"></i>
-            <span id="dashboardDate">Loading...</span>
-        </div>
-
-        <button id="logoutBtn" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i>
+</div>
+<div class="topbar-right">
+<div class="dashboard-date">
+<i class="fas fa-calendar-alt"></i>
+<span id="dashboardDate">Loading...</span>
+</div>
+<button class="logout-btn" id="logoutBtn">
+<i class="fas fa-sign-out-alt"></i>
             Logout
         </button>
-
-    </div>
-
+</div>
 </header>
-
-        <!-- ==========================================
+<!-- ==========================================
      DASHBOARD SUMMARY CARDS
 ========================================== -->
-
 <section class="cards">
-
-    <!-- Total Products -->
-
-    <div class="card dashboard-card product-card">
-
-        <div class="card-icon">
-            <i class="fas fa-box"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h3>Total Products</h3>
-
-            <h2 id="totalProducts">0</h2>
-
-            <p>
-                <i class="fas fa-cubes"></i>
+<!-- Total Products -->
+<div class="card dashboard-card product-card">
+<div class="card-icon">
+<i class="fas fa-box"></i>
+</div>
+<div class="card-info">
+<h3>Total Products</h3>
+<h2 id="totalProducts">0</h2>
+<p>
+<i class="fas fa-cubes"></i>
                 Products in inventory
             </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- Today's Sales -->
-
-    <div class="card dashboard-card sales-card">
-
-        <div class="card-icon">
-            <i class="fas fa-chart-line"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h3>Today's Sales</h3>
-
-            <h2 id="todaySales">৳0</h2>
-
-            <p>
-                <i class="fas fa-calendar-day"></i>
+</div>
+</div>
+<!-- Today's Sales -->
+<div class="card dashboard-card sales-card">
+<div class="card-icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="card-info">
+<h3>Today's Sales</h3>
+<h2 id="todaySales">৳0</h2>
+<p>
+<i class="fas fa-calendar-day"></i>
                 Today's total sales
             </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- Customers -->
-
-    <div class="card dashboard-card customer-card">
-
-        <div class="card-icon">
-            <i class="fas fa-users"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h3>Customers</h3>
-
-            <h2 id="totalCustomers">0</h2>
-
-            <p>
-                <i class="fas fa-user-check"></i>
+</div>
+</div>
+<!-- Customers -->
+<div class="card dashboard-card customer-card">
+<div class="card-icon">
+<i class="fas fa-users"></i>
+</div>
+<div class="card-info">
+<h3>Customers</h3>
+<h2 id="totalCustomers">0</h2>
+<p>
+<i class="fas fa-user-check"></i>
                 Registered customers
             </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- Profit -->
-
-    <div class="card dashboard-card profit-card">
-
-        <div class="card-icon">
-            <i class="fas fa-money-bill-wave"></i>
-        </div>
-
-        <div class="card-info">
-
-            <h3>Profit</h3>
-
-            <h2 id="profit">৳0</h2>
-
-            <p>
-                <i class="fas fa-arrow-trend-up"></i>
+</div>
+</div>
+<!-- Profit -->
+<div class="card dashboard-card profit-card">
+<div class="card-icon">
+<i class="fas fa-money-bill-wave"></i>
+</div>
+<div class="card-info">
+<h3>Profit</h3>
+<h2 id="profit">৳0</h2>
+<p>
+<i class="fas fa-arrow-trend-up"></i>
                 Business profit
             </p>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
-
-        <section class="recent-sales">
-
-            <h2>Recent Sales</h2>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Date</th>
-
-                        <th>Customer</th>
-
-                        <th>Amount</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="salesTable">
-
-                    <tr>
-
-                        <td colspan="3">
+<section class="recent-sales">
+<h2>Recent Sales</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Customer</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody id="salesTable">
+<tr>
+<td colspan="3">
 
                             কোনো বিক্রয়ের তথ্য নেই
 
                         </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
+</tr>
+</tbody>
+</table>
+</section>
 <!-- ==========================================
      DASHBOARD LOWER SECTION
 ========================================== -->
-
 <section class="dashboard-lower">
 <!-- ==========================================
      SALES SUMMARY
 ========================================== -->
-
 <div class="dashboard-box sales-summary-box">
-
-    <div class="box-header">
-
-        <h2>
+<div class="box-header">
+<h2>
             📈 Sales Summary
         </h2>
-
-        <p>
+<p>
             ব্যবসার মোট বিক্রয়
         </p>
-
-    </div>
-
-    <div class="sales-summary-content">
-
-        <div class="summary-row">
-
-            <span>
-                <i class="fas fa-receipt"></i>
+</div>
+<div class="sales-summary-content">
+<div class="summary-row">
+<span>
+<i class="fas fa-receipt"></i>
                 Total Sales
             </span>
-
-            <strong id="dashboardTotalSales">
+<strong id="dashboardTotalSales">
                 ৳ 0
             </strong>
-
-        </div>
-
-
-        <div class="summary-row">
-
-            <span>
-                <i class="fas fa-file-invoice"></i>
+</div>
+<div class="summary-row">
+<span>
+<i class="fas fa-file-invoice"></i>
                 Total Invoices
             </span>
-
-            <strong id="dashboardTotalInvoices">
+<strong id="dashboardTotalInvoices">
                 0
             </strong>
-
-        </div>
-
-
-        <div class="summary-row">
-
-            <span>
-                <i class="fas fa-coins"></i>
+</div>
+<div class="summary-row">
+<span>
+<i class="fas fa-coins"></i>
                 Average Sale
             </span>
-
-            <strong id="dashboardAverageSale">
+<strong id="dashboardAverageSale">
                 ৳ 0
             </strong>
-
-        </div>
-
-    </div>
-
 </div>
-
-    <!-- ======================================
+</div>
+</div>
+<!-- ======================================
          QUICK ACTIONS
     ======================================= -->
-
-    <div class="dashboard-box quick-actions">
-
-        <div class="box-header">
-
-            <h2>
+<div class="dashboard-box quick-actions">
+<div class="box-header">
+<h2>
                 ⚡ Quick Actions
             </h2>
-
-            <p>
+<p>
                 দ্রুত কাজ করার জন্য
             </p>
-
-        </div>
-
-
-        <div class="quick-action-grid">
-
-            <a href="pos.html" class="quick-action">
-
-                <i class="fas fa-cash-register"></i>
-
-                <span>New Sale</span>
-
-            </a>
-
-
-            <a href="products.html" class="quick-action">
-
-                <i class="fas fa-box"></i>
-
-                <span>Products</span>
-
-            </a>
-
-
-            <a href="customers.html" class="quick-action">
-
-                <i class="fas fa-users"></i>
-
-                <span>Customers</span>
-
-            </a>
-
-
-            <a href="reports.html" class="quick-action">
-
-                <i class="fas fa-chart-line"></i>
-
-                <span>Reports</span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ======================================
+</div>
+<div class="quick-action-grid">
+<a class="quick-action" href="pos.html">
+<i class="fas fa-cash-register"></i>
+<span>New Sale</span>
+</a>
+<a class="quick-action" href="products.html">
+<i class="fas fa-box"></i>
+<span>Products</span>
+</a>
+<a class="quick-action" href="customers.html">
+<i class="fas fa-users"></i>
+<span>Customers</span>
+</a>
+<a class="quick-action" href="reports.html">
+<i class="fas fa-chart-line"></i>
+<span>Reports</span>
+</a>
+</div>
+</div>
+<!-- ======================================
          LOW STOCK PRODUCTS
     ======================================= -->
-
-    <div class="dashboard-box low-stock-box">
-
-        <div class="box-header">
-
-            <h2>
+<div class="dashboard-box low-stock-box">
+<div class="box-header">
+<h2>
                 ⚠️ Low Stock Products
             </h2>
-
-            <p>
+<p>
                 কম স্টকের পণ্য
             </p>
-
-        </div>
-
-
-        <div class="low-stock-list"
-             id="lowStockList">
-
-            <div class="empty-low-stock">
-
-                <i class="fas fa-check-circle"></i>
-
-                <p>
+</div>
+<div class="low-stock-list" id="lowStockList">
+<div class="empty-low-stock">
+<i class="fas fa-check-circle"></i>
+<p>
                     কোনো Low Stock Product নেই
                 </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-</section>
-    </main>
-
 </div>
-
+</div>
+</div>
+</section>
+</main>
+</div>
 <script src="js/dashboard.js"></script>
-
-</body>
+<script src="js/report-tools.js"></script></body>
 </html>

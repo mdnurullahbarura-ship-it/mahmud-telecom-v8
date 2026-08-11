@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Transaction Receipt | Mahmud Telecom</title>
 <style>
 *{box-sizing:border-box}
@@ -21,24 +22,24 @@ body{font-family:Arial,"Noto Sans Bengali",sans-serif;margin:0;padding:20px;back
 .back-btn{display:block;margin:8px auto 0;padding:8px 20px;border:none;background:#666;color:#fff;border-radius:5px;cursor:pointer;font-size:13px}
 @media print{body{padding:0}.print-btn,.back-btn{display:none!important}.receipt{max-width:360px}}
 </style>
-</head>
-<body>
-<div class="receipt">
-  <div class="header">
-    <h2>📱 <span id="shopName">Mahmud Telecom</span></h2>
-    <p id="serviceSubtitle">Digital Services</p>
-  </div>
-  <div class="title">🧾 Transaction Receipt</div>
-  <table class="info">
-    <tbody id="details"></tbody>
-  </table>
-  <div class="amount" id="total">Total: ৳0</div>
-  <div class="footer">
-    <p>ধন্যবাদ আমাদের সেবা গ্রহণ করার জন্য।</p>
-    <p>Mahmud Telecom</p>
-  </div>
-  <button class="print-btn" onclick="window.print()">🖨️ Print Receipt</button>
-  <button class="back-btn" onclick="history.back()">↩️ Back</button>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/></head>
+<body><script src="js/core.js"></script>
+<div class="receipt" id="receiptPrintable">
+<div class="header">
+<h2>📱 <span id="shopName">Mahmud Telecom</span></h2>
+<p id="serviceSubtitle">Digital Services</p>
+</div>
+<div class="title">🧾 Transaction Receipt</div>
+<table class="info">
+<tbody id="details"></tbody>
+</table>
+<div class="amount" id="total">Total: ৳0</div>
+<div class="footer">
+<p>ধন্যবাদ আমাদের সেবা গ্রহণ করার জন্য।</p>
+<p>Mahmud Telecom</p>
+</div>
+<button class="print-btn" onclick="window.print()">🖨️ Print Receipt</button>
+<button class="back-btn" onclick="history.back()">↩️ Back</button><button class="mt-png-btn" onclick="MahmudReportTools.downloadPNG('#receiptPrintable','Mahmud_Telecom_receiptPrintable')" type="button">🖼️ PNG</button>
 </div>
 <script>
 (function(){
@@ -74,5 +75,5 @@ body{font-family:Arial,"Noto Sans Bengali",sans-serif;margin:0;padding:20px;back
   total.textContent='Total '+(item.type==='Recharge'?'Recharge':'Transaction')+': '+money(item.amount);
 })();
 </script>
-</body>
+<script src="js/report-tools.js"></script></body>
 </html>

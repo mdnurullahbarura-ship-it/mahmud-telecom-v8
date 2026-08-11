@@ -1,313 +1,124 @@
 <!DOCTYPE html>
+
 <html lang="bn">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Purchase | Mahmud Telecom</title>
-
-<link rel="stylesheet" href="css/dashboard.css">
-<link rel="stylesheet" href="css/products.css">
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/responsive.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<link href="css/dashboard.css" rel="stylesheet"/>
+<link href="css/products.css" rel="stylesheet"/>
+<link href="css/theme.css" rel="stylesheet"/>
+<link href="css/responsive.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/>
 </head>
-
-<body>
-
-<script>
-
-if(localStorage.getItem("isLoggedIn")!=="true"){
-
-    alert("⚠️ আগে লগইন করুন");
-
-    location.href="login.html";
-
-}
-
-</script>
-
+<body><script src="js/core.js"></script>
 <div class="dashboard">
-
 <!-- ==========================
 SIDEBAR
 ========================== -->
-
-<aside class="sidebar">
-
-<div class="logo">
-
-<img src="images/logo.png" alt="Logo">
-
-<h2>Mahmud Telecom</h2>
-
-<p>Shop Management V8</p>
-
-</div>
-
-<ul>
-
-<li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
-
-<li><a href="products.html"><i class="fas fa-box"></i> Products</a></li>
-
-<li><a href="pos.html"><i class="fas fa-cash-register"></i> POS</a></li>
-<!-- Due Management -->
-
-<li>
-    <a href="due.html">
-
-        <i class="fas fa-hand-holding-dollar"></i>
-
-        Due
-
-    </a>
-</li>
-
-
-<!-- Mobile Recharge -->
-
-<li>
-    <a href="recharge.html">
-
-        <i class="fas fa-mobile-screen-button"></i>
-
-        Recharge
-
-    </a>
-</li>
-<li>
-    <a href="mobile-banking.html">
-        <i class="fas fa-wallet"></i>
-        Mobile Banking
-    </a>
-</li>
-
-<li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
-
-<li><a href="purchase.html" class="active"><i class="fas fa-cart-plus"></i> Purchase</a></li>
-
-<li><a href="suppliers.html"><i class="fas fa-truck"></i> Suppliers</a></li>
-
-<li><a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a></li>
-
-<li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-
-<li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
-
-</ul>
-
-</aside>
-
+<aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a></li><li><a href="products.html"><i class="fas fa-box"></i><span>Products</span></a></li><li><a href="pos.html"><i class="fas fa-cash-register"></i><span>POS</span></a></li><li><a class="active" href="purchase.html"><i class="fas fa-cart-plus"></i><span>Purchase</span></a></li><li><a href="due.html"><i class="fas fa-hand-holding-dollar"></i><span>Due</span></a></li><li><a href="recharge.html"><i class="fas fa-mobile-screen-button"></i><span>Recharge</span></a></li><li><a href="mobile-banking.html"><i class="fas fa-wallet"></i><span>Mobile Banking</span></a></li><li><a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a></li><li><a href="suppliers.html"><i class="fas fa-truck"></i><span>Suppliers</span></a></li><li><a href="reports.html"><i class="fas fa-chart-line"></i><span>Reports</span></a></li><li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li></ul></aside>
 <!-- ==========================
 MAIN CONTENT
 ========================== -->
-
 <main class="main-content">
-
 <header class="topbar">
-
 <div>
-
 <h1>📦 Purchase Management</h1>
-
 <p>নতুন পণ্য ক্রয় করে স্টক বৃদ্ধি করুন</p>
-
 </div>
-
 </header>
 <!-- ==========================================
 PURCHASE FORM
 ========================================== -->
-
 <section class="card">
-
-    <h2>📦 নতুন Purchase যোগ করুন</h2>
-
-    <form id="purchaseForm" class="product-form">
-
-        <div class="form-grid">
-
-            <div class="form-group">
-
-                <label>🚚 Supplier</label>
-
-                <select id="purchaseSupplier" required>
-
-                    <option value="">-- Supplier নির্বাচন করুন --</option>
-
-                </select>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>📱 Product</label>
-
-                <select id="purchaseProduct" required>
-
-                    <option value="">-- Product নির্বাচন করুন --</option>
-
-                </select>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>💰 Purchase Price</label>
-
-                <input
-                    type="number"
-                    id="purchasePrice"
-                    placeholder="Purchase Price"
-                    min="0"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>🔢 Quantity</label>
-
-                <input
-                    type="number"
-                    id="purchaseQty"
-                    placeholder="Quantity"
-                    min="1"
-                    value="1"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>📅 Purchase Date</label>
-
-                <input
-                    type="date"
-                    id="purchaseDate"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>💵 Total Amount</label>
-
-                <input
-                    type="number"
-                    id="purchaseTotal"
-                    value="0"
-                    readonly>
-
-            </div>
-
-        </div>
-
-        <div class="form-group mt-20">
-
-            <label>📝 Note</label>
-
-            <textarea
-                id="purchaseNote"
-                rows="4"
-                placeholder="Purchase সম্পর্কে অতিরিক্ত তথ্য"></textarea>
-
-        </div>
-
-        <div class="mt-20">
-
-            <button
-                type="submit"
-                class="dashboard-btn">
+<h2>📦 নতুন Purchase যোগ করুন</h2>
+<form class="product-form" id="purchaseForm">
+<div class="form-grid">
+<div class="form-group">
+<label>🚚 Supplier</label>
+<select id="purchaseSupplier" required="">
+<option value="">-- Supplier নির্বাচন করুন --</option>
+</select>
+</div>
+<div class="form-group">
+<label>📱 Product</label>
+<select id="purchaseProduct" required="">
+<option value="">-- Product নির্বাচন করুন --</option>
+</select>
+</div>
+<div class="form-group">
+<label>💰 Purchase Price</label>
+<input id="purchasePrice" min="0" placeholder="Purchase Price" required="" type="number"/>
+</div>
+<div class="form-group">
+<label>🔢 Quantity</label>
+<input id="purchaseQty" min="1" placeholder="Quantity" required="" type="number" value="1"/>
+</div>
+<div class="form-group">
+<label>📅 Purchase Date</label>
+<input id="purchaseDate" required="" type="date"/>
+</div>
+<div class="form-group">
+<label>💵 Total Amount</label>
+<input id="purchaseTotal" readonly="" type="number" value="0"/>
+</div>
+</div>
+<div class="form-group mt-20">
+<label>📝 Note</label>
+<textarea id="purchaseNote" placeholder="Purchase সম্পর্কে অতিরিক্ত তথ্য" rows="4"></textarea>
+</div>
+<div class="mt-20">
+<button class="dashboard-btn" type="submit">
 
                 💾 Save Purchase
 
             </button>
-
-            <button
-                type="reset"
-                class="btn-secondary">
+<button class="btn-secondary" type="reset">
 
                 🔄 Reset
 
             </button>
-
-        </div>
-
-    </form>
-
+</div>
+</form>
 </section>
 <!-- ==========================================
 PURCHASE HISTORY
 ========================================== -->
-
-<section class="card">
-
-    <div class="table-header">
-
-        <h2>📋 Purchase History</h2>
-
-        <span id="totalPurchases" class="badge">
+<section class="card" id="purchaseReport">
+<div class="table-header">
+<h2>📋 Purchase History</h2>
+<span class="badge" id="totalPurchases">
             Total: 0
         </span>
-
-    </div>
-
-    <div class="table-responsive">
-
-        <table class="product-table">
-
-            <thead>
-
-                <tr>
-
-                    <th>#</th>
-                    <th>Date</th>
-                    <th>Supplier</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                    <th>Action</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="purchaseTableBody">
-
-                <tr>
-
-                    <td colspan="8"
-                    style="text-align:center;padding:30px;color:#777;">
+<div class="mt-report-tools"><button class="mt-print-btn" onclick="MahmudReportTools.printPage()" type="button">🖨️ Print</button><button class="mt-png-btn" onclick="MahmudReportTools.downloadPNG('#purchaseReport','Mahmud_Telecom_purchaseReport')" type="button">🖼️ PNG</button></div></div>
+<div class="table-responsive">
+<table class="product-table">
+<thead>
+<tr>
+<th>#</th>
+<th>Date</th>
+<th>Supplier</th>
+<th>Product</th>
+<th>Price</th>
+<th>Qty</th>
+<th>Total</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="purchaseTableBody">
+<tr>
+<td colspan="8" style="text-align:center;padding:30px;color:#777;">
 
                         এখনো কোনো Purchase যোগ করা হয়নি
 
                     </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-</main>
-
+</tr>
+</tbody>
+</table>
 </div>
-
+</section>
+</main>
+</div>
 <script src="js/purchase.js"></script>
-
-</body>
-
+<script src="js/report-tools.js"></script></body>
 </html>
