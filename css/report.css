@@ -1,0 +1,19 @@
+
+/* Mahmud Telecom V8 - Report / Print / PNG polish */
+.mt-png-btn,.mt-print-btn,.report-export-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border:0;border-radius:9px;padding:10px 16px;cursor:pointer;
+  font:700 14px/1.2 "Hind Siliguri",Arial,sans-serif;
+  text-decoration:none;box-shadow:0 5px 14px rgba(15,23,42,.12);
+  margin:8px 4px;
+}
+.mt-png-btn{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff}
+.mt-print-btn,.report-export-btn{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff}
+.mt-png-btn:hover,.mt-print-btn:hover,.report-export-btn:hover{filter:brightness(.96);transform:translateY(-1px)}
+.mt-report-logo{display:block;width:150px;height:100px;object-fit:contain;margin:0 auto 8px}
+@media print{
+  .mt-png-btn,.mt-print-btn,.report-export-btn,.mt-global-toolbar,.back-btn,.dashboard-btn{display:none!important}
+}
+
+/* Offline PNG export button */
+.mt-png-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;cursor:pointer!important}
