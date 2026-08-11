@@ -423,8 +423,29 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/><style>
     .mb-page{margin-left:260px}
     @media(max-width:768px){.mb-page{margin-left:0}}
-    </style></head>
-<body><aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><i class="fas fa-home"></i><span>Dashboard</span></a></li><li><a href="products.html"><i class="fas fa-box"></i><span>Products</span></a></li><li><a href="pos.html"><i class="fas fa-cash-register"></i><span>POS</span></a></li><li><a href="purchase.html"><i class="fas fa-cart-plus"></i><span>Purchase</span></a></li><li><a href="due.html"><i class="fas fa-hand-holding-dollar"></i><span>Due</span></a></li><li><a href="recharge.html"><i class="fas fa-mobile-screen-button"></i><span>Recharge</span></a></li><li><a class="active" href="mobile-banking.html"><i class="fas fa-wallet"></i><span>Mobile Banking</span></a></li><li><a href="customers.html"><i class="fas fa-users"></i><span>Customers</span></a></li><li><a href="suppliers.html"><i class="fas fa-truck"></i><span>Suppliers</span></a></li><li><a href="reports.html"><i class="fas fa-chart-line"></i><span>Reports</span></a></li><li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><i class="fas fa-right-from-bracket"></i><span>Logout</span></a></li></ul></aside><script src="js/core.js"></script>
+    </style>
+<style>
+/* Final mobile-banking visual theme */
+.mb-page{background:linear-gradient(135deg,#eef5ff 0%,#f8fbff 45%,#eefbf8 100%)!important}
+.mb-header{background:linear-gradient(135deg,#071f57,#0d47a1 55%,#1976d2)!important;box-shadow:0 14px 30px rgba(13,71,161,.18)!important}
+.mb-account{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.75)!important}
+.mb-account::after{content:"";position:absolute;width:90px;height:90px;right:-28px;top:-28px;border-radius:50%;background:rgba(255,255,255,.35)}
+.mb-account.bkash-card{background:linear-gradient(145deg,#fff,#f7e9f7)!important;border-top:5px solid #e2136e!important}
+.mb-account.nagad-card{background:linear-gradient(145deg,#fff,#fff0e2)!important;border-top:5px solid #f58220!important}
+.mb-account.rocket-card{background:linear-gradient(145deg,#fff,#eaf1ff)!important;border-top:5px solid #7a1fa2!important}
+.mb-account.mcash-card{background:linear-gradient(145deg,#fff,#eaf9ee)!important;border-top:5px solid #159447!important}
+.mb-account.cellfin-card{background:linear-gradient(145deg,#fff,#e8fbfa)!important;border-top:5px solid #008f87!important}
+.mb-account.bank-card{background:linear-gradient(145deg,#fff,#eef2f5)!important;border-top:5px solid #455a64!important}
+.mb-account.cash-card{background:linear-gradient(145deg,#fff,#eaf8ee)!important;border-top:5px solid #2e7d32!important}
+.mb-balance{color:#0d47a1!important}
+.mb-table{border-radius:14px;overflow:hidden;box-shadow:0 10px 28px rgba(15,23,42,.08)}
+.mb-table th{background:linear-gradient(135deg,#071f57,#1565c0)!important}
+.mb-table tr:nth-child(even){background:#f8fbff}
+.mb-table tr:hover{background:#eaf3ff!important}
+.mb-save,.mb-receipt-btn{background:linear-gradient(135deg,#0d47a1,#1976d2)!important}
+</style>
+</head>
+<body><aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><span class="nav-icon" aria-hidden="true">🏠</span><span>Dashboard</span></a></li><li><a href="products.html"><span class="nav-icon" aria-hidden="true">📦</span><span>Products</span></a></li><li><a href="pos.html"><span class="nav-icon" aria-hidden="true">🛒</span><span>POS</span></a></li><li><a href="purchase.html"><span class="nav-icon" aria-hidden="true">🧾</span><span>Purchase</span></a></li><li><a href="due.html"><span class="nav-icon" aria-hidden="true">💳</span><span>Due</span></a></li><li><a href="recharge.html"><span class="nav-icon" aria-hidden="true">📱</span><span>Recharge</span></a></li><li><a href="sim.html"><span class="nav-icon" aria-hidden="true">📶</span><span>SIM</span></a></li><li><a class="active" href="mobile-banking.html"><span class="nav-icon" aria-hidden="true">💰</span><span>Mobile Banking</span></a></li><li><a href="customers.html"><span class="nav-icon" aria-hidden="true">👥</span><span>Customers</span></a></li><li><a href="suppliers.html"><span class="nav-icon" aria-hidden="true">🚚</span><span>Suppliers</span></a></li><li><a href="reports.html"><span class="nav-icon" aria-hidden="true">📊</span><span>Reports</span></a></li><li><a href="settings.html"><span class="nav-icon" aria-hidden="true">⚙️</span><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><span class="nav-icon" aria-hidden="true">🚪</span><span>Logout</span></a></li></ul></aside><script src="js/core.js"></script>
 <!-- =========================================
      PAGE
 ========================================== -->

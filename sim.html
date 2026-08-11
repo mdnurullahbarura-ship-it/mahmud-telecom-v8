@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="bn">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIM Management | Mahmud Telecom</title>
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/theme.css">
 </head>
 <body>
-</body>
-</html>
+<script src="js/core.js"></script>
+<div class="dashboard">
+<aside class="sidebar"><div class="logo"><img alt="Mahmud Telecom Logo" src="images/logo.png"/><h2>Mahmud Telecom</h2><p>Shop Management V8</p></div><ul><li><a href="dashboard.html"><span class="nav-icon" aria-hidden="true">🏠</span><span>Dashboard</span></a></li><li><a href="products.html"><span class="nav-icon" aria-hidden="true">📦</span><span>Products</span></a></li><li><a href="pos.html"><span class="nav-icon" aria-hidden="true">🛒</span><span>POS</span></a></li><li><a href="purchase.html"><span class="nav-icon" aria-hidden="true">🧾</span><span>Purchase</span></a></li><li><a href="due.html"><span class="nav-icon" aria-hidden="true">💳</span><span>Due</span></a></li><li><a href="recharge.html"><span class="nav-icon" aria-hidden="true">📱</span><span>Recharge</span></a></li><li><a class="active" href="sim.html"><span class="nav-icon" aria-hidden="true">📶</span><span>SIM</span></a></li><li><a href="mobile-banking.html"><span class="nav-icon" aria-hidden="true">💰</span><span>Mobile Banking</span></a></li><li><a href="customers.html"><span class="nav-icon" aria-hidden="true">👥</span><span>Customers</span></a></li><li><a href="suppliers.html"><span class="nav-icon" aria-hidden="true">🚚</span><span>Suppliers</span></a></li><li><a href="reports.html"><span class="nav-icon" aria-hidden="true">📊</span><span>Reports</span></a></li><li><a href="settings.html"><span class="nav-icon" aria-hidden="true">⚙️</span><span>Settings</span></a></li><li><a href="login.html" id="logoutBtn"><span class="nav-icon" aria-hidden="true">🚪</span><span>Logout</span></a></li></ul></aside>
+<main class="main-content">
+<header class="topbar">
+<div><h1>📶 SIM Management</h1><p>SIM বিক্রয়, রেজিস্ট্রেশন ও স্টক ব্যবস্থাপনা</p></div>
+</header>
+
+<section class="cards">
+<div class="card"><h3>📦 Total SIM</h3><h2 id="simTotal">0</h2></div>
+<div class="card"><h3>🟢 Available</h3><h2 id="simAvailable">0</h2></div>
+<div class="card"><h3>🔴 Sold</h3><h2 id="simSold">0</h2></div>
+<div class="card"><h3>💰 Sales Value</h3><h2 id="simValue">৳ 0</h2></div>
+</section>
+
+<section class="card">
+<div class="table-header"><h2>➕ Add SIM</h2></div>
+<form class="product-form" id="simForm">
+<div class="form-grid">
+<div class="form-group"><label>📱 Operator</label>
+<select id="simOperator" required><option value="">-- Operator নির্বাচন করুন --</option><option>Grameenphone</option><option>Robi</option><option>Airtel</option><option>Banglalink</option><option>Teletalk</option></select></div>
+<div class="form-group"><label>🔢 SIM Number</label><input id="simNumber" required placeholder="SIM Number"></div>
+<div class="form-group"><label>🆔 Serial / ICCID</label><input id="simSerial" placeholder="ICCID / Serial"></div>
+<div class="form-group"><label>💵 Sale Price</label><input id="simPrice" type="number" min="0" value="0"></div>
+<div class="form-group"><label>📅 Date</label><input id="simDate" type="date" required></div>
+<div class="form-group"><label>📌 Status</label><select id="simStatus"><option value="Available">Available</option><option value="Sold">Sold</option></select></div>
+</div>
+<div class="mt-20"><button class="dashboard-btn" type="submit">💾 Save SIM</button><button class="btn-secondary" type="reset">🔄 Reset</button></div>
+</form>
+</section>
+
+<section class="card" id="simReport">
+<div class="table-header"><h2>📋 SIM List</h2><div class="mt-report-tools"><button class="mt-print-btn" type="button" onclick="MahmudReportTools.printPage()">🖨️ Print</button><button class="mt-png-btn" type="button" onclick="MahmudReportTools.downloadPNG('#simReport','Mahmud_Telecom_SIM_Report')">🖼️ PNG</button></div></div>
+<div class="table-responsive"><table class="product-table"><thead><tr><th>#</th><th>Operator</th><th>SIM Number</th><th>Serial</th><th>Price</th><th>Date</th><th>Status</th><th>Action</th></tr></thead><tbody id="simTableBody"></tbody></table></div>
+</section>
+</main></div>
+<script src="js/sim.js"></script><script src="js/report-tools.js"></script>
+</body></html>
