@@ -67,3 +67,7 @@ Repository name বা GitHub Pages URL পরিবর্তন হলেও �
 ## Backup
 
 Settings থেকে backup নিয়ে রাখুন। Browser data/localStorage মুছে গেলে বা অন্য device-এ গেলে পুরোনো data নিজে থেকে আসবে না।
+
+
+### PNG Export Update
+All report PNG buttons now render a fixed A4 portrait PNG (210×297 mm) without changing the normal page or Print layout. The PNG renderer uses html2canvas 1.4.1 from cdnjs when the PNG button is pressed.

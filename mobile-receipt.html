@@ -7,20 +7,50 @@
 <title>Transaction Receipt | Mahmud Telecom</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:Arial,"Noto Sans Bengali",sans-serif;margin:0;padding:20px;background:#fff;color:#222}
-.receipt{width:100%;max-width:360px;margin:auto}
+html,body{margin:0;padding:0;background:#fff;color:#222}
+body{font-family:Arial,"Noto Sans Bengali",sans-serif;overflow-x:hidden}
+.receipt{
+  width:min(210mm,calc(100vw - 20px));
+  max-width:210mm;
+  min-height:297mm;
+  margin:10px auto;
+  padding:12mm;
+  background:#fff;
+}
 .header{text-align:center;border-bottom:2px dashed #333;padding-bottom:12px;margin-bottom:15px}
 .header h2{margin:0 0 5px;font-size:22px}
 .header p{margin:3px 0;font-size:13px}
-.title{text-align:center;font-size:18px;font-weight:bold;margin:15px 0}
-.info{width:100%;border-collapse:collapse}
-.info td{padding:7px 3px;font-size:14px;border-bottom:1px dotted #aaa;vertical-align:top}
-.info td:first-child{font-weight:bold;width:42%}
-.amount{font-size:22px;font-weight:bold;text-align:center;padding:15px;margin-top:15px;border:2px solid #222}
-.footer{text-align:center;margin-top:20px;padding-top:12px;border-top:2px dashed #333;font-size:12px}
+.title{text-align:center;font-size:22px;font-weight:bold;margin:15px 0}
+.info{width:100%;border-collapse:collapse;table-layout:fixed}
+.info td{
+  padding:9px 6px;
+  font-size:16px;
+  border-bottom:1px dotted #aaa;
+  vertical-align:top;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.info td:first-child{font-weight:bold;width:35%}
+.info td:nth-child(2){width:65%}
+.amount{font-size:24px;font-weight:bold;text-align:center;padding:18px;margin-top:15px;border:2px solid #222;overflow-wrap:anywhere}
+.footer{text-align:center;margin-top:20px;padding-top:12px;border-top:2px dashed #333;font-size:14px}
 .print-btn{display:block;margin:20px auto 0;padding:10px 25px;border:none;background:#1565c0;color:#fff;border-radius:5px;cursor:pointer;font-size:15px}
 .back-btn{display:block;margin:8px auto 0;padding:8px 20px;border:none;background:#666;color:#fff;border-radius:5px;cursor:pointer;font-size:13px}
-@media print{body{padding:0}.print-btn,.back-btn{display:none!important}.receipt{max-width:360px}}
+
+@media print{
+  @page{size:A4 portrait;margin:10mm}
+  html,body{width:210mm;min-height:297mm}
+  body{padding:0;overflow:visible}
+  .print-btn,.back-btn,.mt-png-btn{display:none!important}
+  .receipt{
+    width:210mm;
+    max-width:none;
+    min-height:297mm;
+    margin:0 auto;
+    padding:0;
+  }
+}
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet"/><link href="css/report.css" rel="stylesheet"/><link rel="icon" type="image/png" href="images/logo.png"/>
 </head>
