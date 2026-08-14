@@ -66,22 +66,58 @@ if(purchaseDate){
 // ======================================
 
 function loadSuppliers(){
-
     if(!purchaseSupplier) return;
 
+    readPurchaseData();
+
+    const current = purchaseSupplier.value;
+
     purchaseSupplier.innerHTML =
-    '<option value="">-- Supplier নির্বাচন করুন --</option>';
+        '<option value="">-- Supplier নির্বাচন করুন --</option>';
 
-    suppliers.forEach(item=>{
+    const seen = new Set();
 
-        purchaseSupplier.innerHTML +=
+    suppliers.forEach(item => {
 
-        `<option value="${item.company}">
-            ${item.company}
-        </option>`;
+        let name = "";
 
+        if(typeof item === "string"){
+            name = item.trim();
+        }else if(item && typeof item === "object"){
+            name = String(
+                item.company ||
+                item.companyName ||
+                item.name ||
+                item.supplier ||
+                item.supplierName ||
+                item.contactPerson ||
+                ""
+            ).trim();
+        }
+
+        if(!name || seen.has(name)) return;
+
+        seen.add(name);
+
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+
+        purchaseSupplier.appendChild(option);
     });
 
+    if(seen.size === 0){
+        const option = document.createElement("option");
+        option.value = "__add_supplier__";
+        option.textContent =
+            "➕ Suppliers পেজে আগে Supplier যোগ করুন";
+
+        purchaseSupplier.appendChild(option);
+    }
+
+    if(current && seen.has(current)){
+        purchaseSupplier.value = current;
+    }
 }
 
 // ======================================
