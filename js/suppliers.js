@@ -9,11 +9,18 @@
 // ======================================
 // Local Storage
 // ======================================
+let suppliers = (() => {
+    try {
+        const raw = JSON.parse(localStorage.getItem("suppliers") || "[]");
 
-let suppliers =
-JSON.parse(localStorage.getItem("suppliers")) || [];
+        if (Array.isArray(raw)) return raw;
+        if (raw && Array.isArray(raw.data)) return raw.data;
+        if (raw && Array.isArray(raw.items)) return raw.items;
+        if (raw && Array.isArray(raw.list)) return raw.list;
+    } catch (e) {}
 
-let editIndex = -1;
+    return [];
+})();
 
 // ======================================
 // Elements
